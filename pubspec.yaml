@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   percent_indicator: ^4.0.1
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,12 @@ flutter:
       - assets/bodibilder-myshtsy-sportsmen-sportzal-press 1.png
       - assets/bigpicture_ru_adobestock_216484492 1.png
       - assets/imgpreview 3.jpg
+      - assets/Icon/free-icon-profile-3135768 1.png
+      - assets/Icon/chat (3) 1.png
+      - assets/Icon/workout (1) 1.png
+      - assets/Icon/free-icon-running-2843700 1.png
+      - assets/Icon/free-icon-diet-561611 1.png
+      - assets/Icon/home_(2)_2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
