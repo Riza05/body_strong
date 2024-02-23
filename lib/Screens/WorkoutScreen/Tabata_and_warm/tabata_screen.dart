@@ -23,15 +23,24 @@ class Tabata_screen extends StatelessWidget {
                 fit: BoxFit.cover
               )),
             child: List_tabata_and_warm(
-                "assets/na-avy-parni-44.jpg",
-                ["Фулбоди",
-                  "Пресс",
-                  "Верхняя часть тела",
-                  "Нижняя часть тела",
-                  "Сожги жир",
-                  "Рельеф"
+              "assets/na-avy-parni-44.jpg",
+              ["Фулбоди",
+                "Пресс",
+                "Верхняя часть тела",
+                "Нижняя часть тела",
+                "Сожги жир",
+                "Рельеф"
               ],
-            6)
+                6,
+              ["/Tabata_fulbadi_training",
+              "/Tabata_press_training",
+              "/Tabata_upper_part_training",
+              "/Tabata_lower_part_training",
+              "/Tabata_burn_the_fat_training",
+              "/Tabata_relief_press_training",
+              ],
+              context
+            )
           ),
         )
       )
