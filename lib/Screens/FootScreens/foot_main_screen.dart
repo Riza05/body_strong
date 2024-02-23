@@ -12,15 +12,8 @@ class Foot_main_screen extends StatelessWidget {
       home: Main_menus_screen(
         textTitle: 'BODY STRONG',
         backgroundImage: Generate_a_image().m(),
-        widget: Menu_screen(
-          index: 4,
-          titles: const [
-            "Мои продукты",
-            "Мои рецепты",
-            "Рецепты",
-            "Программа питания",
-          ],
-        )
+        con: context,
+        navigator: "/Home_screen",
       ),
     );
   }
