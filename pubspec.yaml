@@ -36,6 +36,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   percent_indicator: ^4.0.1
   google_fonts: ^6.1.0
+  imageview360: ^1.3.0
+  http: ^1.1.0
+  google_maps_flutter: ^2.5.1
+  sqflite: ^2.3.0
+  path_provider: ^2.1.1
+  table_calendar: ^3.0.9
 
 dev_dependencies:
   flutter_test:
@@ -63,18 +69,61 @@ flutter:
   assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-      - assets/na-avy-parni-44.jpg
-      - assets/iPhone-13-Pro-Max-13.jpg
-      - assets/f155a944721ac5b8f6fede66bb972f0e 1.png
-      - assets/bodibilder-myshtsy-sportsmen-sportzal-press 1.png
-      - assets/bigpicture_ru_adobestock_216484492 1.png
-      - assets/imgpreview 3.jpg
-      - assets/Icon/free-icon-profile-3135768 1.png
-      - assets/Icon/chat (3) 1.png
-      - assets/Icon/workout (1) 1.png
-      - assets/Icon/free-icon-running-2843700 1.png
-      - assets/Icon/free-icon-diet-561611 1.png
-      - assets/Icon/home_(2)_2.png
+     - assets/26956302.png
+     - assets/na-avy-parni-44.jpg
+     - assets/iPhone-13-Pro-Max-13.jpg
+     - assets/f155a944721ac5b8f6fede66bb972f0e 1.png
+     - assets/bodibilder-myshtsy-sportsmen-sportzal-press 1.png
+     - assets/bigpicture_ru_adobestock_216484492 1.png
+     - assets/imgpreview 3.jpg
+     - assets/Icon/free-icon-profile-3135768 1.png
+     - assets/Icon/chat (3) 1.png
+     - assets/Icon/workout (1) 1.png
+     - assets/Icon/free-icon-running-2843700 1.png
+     - assets/Icon/free-icon-diet-561611 1.png
+     - assets/Icon/home_(2)_2.png
+     - assets/aerial-drone-panorama-view-village-located-near-river-hills-fields-godrays-clouds-moldova.jpg
+     - assets/pngwing.com.png
+     - assets/png-clipart-fitness-fitness.png
+     - assets/AeDYoPkHqrL6hO.gif
+     - assets/image/30-year-old man with big muscles.jpg
+     - assets/image/_Inner and Outer Strength Man Testing the Limits o.jpg
+     - assets/image/a female athlete with a tanned.jpg
+     - assets/image/a female athlete with a tanned (1).jpg
+     - assets/image/a female athlete with a tanned (2).jpg
+     - assets/image/a female athlete with a tanned (3).jpg
+     - assets/image/a female athlete with a tanned (4).jpg
+     - assets/image/a female athlete with a tanned (5).jpg
+     - assets/image/a female athlete with a tanned (6).jpg
+     - assets/image/a female athlete with a tanned (7).jpg
+     - assets/image/a female athlete with a tanned (8).jpg
+     - assets/image/a male athlete with a tanned.jpg
+     - assets/image/a male athlete with a tanned (1).jpg
+     - assets/image/a male athlete with a tanned (2).jpg
+     - assets/image/a male athlete with a tanned (3).jpg
+     - assets/image/a male athlete with a tanned (4).jpg
+     - assets/image/Fitness girl wears sport bra (1).jpg
+     - assets/image/Generate an image of a handsome.jpg
+     - assets/image/Generate an image of a handsome (1).jpg
+     - assets/image/Muscular sweaty heavyweight alpha men with broad a.jpg
+     - assets/image/photo of thin muscular woman.jpg
+     - assets/image/photo of thin muscular woman (1).jpg
+     - assets/image/portrait of a stunningly beautiful male fairy in s.jpg
+     - assets/image/real photo a female athlete with a tanned.jpg
+     - assets/image/real photo a female athlete with a tanned (1).jpg
+     - assets/image/real photo a male athlete with a tanned.jpg
+     - assets/image/real photo a male athlete with a tanned (1) (1).jpg
+     - assets/image/real photo a male athlete with a tanned (2).jpg
+     - assets/image/real photo a male athlete with a tanned (3).jpg
+     - assets/image/real photo a male athlete with a tanned (5).jpg
+     - assets/image/real photo a male athlete with a tanned (7).jpg
+     - assets/image/real photo a male athlete with a tanned (4) (1).jpg
+     - assets/image/Strong biceps.jpg
+     - assets/image/Two Muscular sweaty heavyweight alpha men with bro.jpg
+     - assets/abs/0ySzRi0HYVHUfU.gif
+     - assets/abs/1K1d3tyB4CYmN3.gif
+     - assets/Icon/filter.png
+     - assets/Json_fiels/Exercises/Abs.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

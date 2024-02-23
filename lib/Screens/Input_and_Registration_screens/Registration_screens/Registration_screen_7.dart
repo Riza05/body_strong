@@ -7,12 +7,14 @@ class Registration_screen_7 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Model(
-          textPrecent: "40%",
-          percent: 0.4,
-          nameScreen: "Укажите ваш рост",
-          widget: _Registration_screen_7()
+          textPrecent: "60%",
+          percent: 0.6,
+          nameScreen: "Желаемый вес",
+          widget: _Registration_screen_7(),
+          con: context,
+          nav: "/Registration_screen_8",
       ),
     );
   }
@@ -22,15 +24,15 @@ class _Registration_screen_7 extends StatefulWidget {
   const _Registration_screen_7({super.key});
 
   @override
-  State<_Registration_screen_7> createState() => _Registration_screen_7State(150, 150, 220);
+  State<_Registration_screen_7> createState() => _Registration_screen_7State(45, 45, 130);
 }
 
 class _Registration_screen_7State extends State<_Registration_screen_7> {
-  _Registration_screen_7State(this.height, this.min, this.max);
+  double height;
+  double min;
+  double max;
 
-  late double height;
-  late double min;
-  late double max;
+  _Registration_screen_7State(this.height, this.min, this.max);
 
   @override
   Widget build(BuildContext context) {

@@ -6,12 +6,15 @@ class Registration_screen_4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Model(
           textPrecent: "30%",
           percent: 0.3,
           nameScreen: "Ваша активность",
-          widget: _Registration_screen_4())
+          widget: _Registration_screen_4(),
+          con: context,
+          nav: "/Registration_screen_5",
+      )
     );
   }
 }
@@ -24,7 +27,7 @@ class _Registration_screen_4 extends StatefulWidget {
 }
 
 class _Registration_screen_4State extends State<_Registration_screen_4> {
-  bool isChecked = false;
+  int _selectedValue = 0;
   List<String> text = <String>[
     "Сидячий образ жизни",
     "Легкая активность",
@@ -34,22 +37,69 @@ class _Registration_screen_4State extends State<_Registration_screen_4> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-        itemCount: 4,
-        itemBuilder: (context, index){
-          return CheckboxListTile(
-            title: Text(text[index]),
-            value: isChecked,
-            onChanged: (bool? value) {
-              setState(() {
-                isChecked = value!;
-              });
-            },
-            activeColor: Colors.yellow,
-            controlAffinity: ListTileControlAffinity.leading,
-          );
-        }
+    return Column(
+      children: [
+        CheckboxListTile(
+          controlAffinity: ListTileControlAffinity.leading,
+          title: Text(text[0], style: const TextStyle(
+              fontSize: 26, color: Color(0xFFFAFF00))),
+          value: _selectedValue == 1,
+          checkColor: Colors.black,
+          activeColor: const Color(0xFFFAFF00),
+          onChanged: (value) {
+            setState(() {
+              if (value!) {
+                _selectedValue = 1;
+              }
+            });
+          },
+        ),
+        CheckboxListTile(
+          controlAffinity: ListTileControlAffinity.leading,
+          title: Text(text[1], style: const TextStyle(
+              fontSize: 26, color: Color(0xFFFAFF00))),
+          value: _selectedValue == 2,
+          checkColor: Colors.black,
+          activeColor: const Color(0xFFFAFF00),
+          onChanged: (value) {
+            setState(() {
+              if (value!) {
+                _selectedValue = 2;
+              }
+            });
+          },
+        ),
+        CheckboxListTile(
+          controlAffinity: ListTileControlAffinity.leading,
+          title: Text(text[2], style: const TextStyle(
+              fontSize: 26, color: Color(0xFFFAFF00))),
+          value: _selectedValue == 3,
+          checkColor: Colors.black,
+          activeColor: const Color(0xFFFAFF00),
+          onChanged: (value) {
+            setState(() {
+              if (value!) {
+                _selectedValue = 3;
+              }
+            });
+          },
+        ),
+        CheckboxListTile(
+          controlAffinity: ListTileControlAffinity.leading,
+          title: Text(text[3], style: const TextStyle(
+              fontSize: 26, color: Color(0xFFFAFF00))),
+          value: _selectedValue == 4,
+          checkColor: Colors.black,
+          activeColor: const Color(0xFFFAFF00),
+          onChanged: (value) {
+            setState(() {
+              if (value!) {
+                _selectedValue = 4;
+              }
+            });
+          },
+        ),
+      ],
     );
   }
 }

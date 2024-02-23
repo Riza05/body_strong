@@ -1,4 +1,7 @@
-import 'package:body_strong/Screens/MainScreens/Main_screen.dart';
+import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/Generate_a_image.dart';
+import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/Main_menus_screens.dart';
+import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/scroll_menu_items_widget.dart';
+import 'package:body_strong/Screens/MainScreens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class Workout_screen extends StatelessWidget {
@@ -6,12 +9,16 @@ class Workout_screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Main_screen(
-        textMotivation: "workout",
+    return MaterialApp(
+      home: Main_menus_screen(
         textTitle: "BODY WORKOUT",
-        backgroundImage: "assets/bodibilder-myshtsy-sportsmen-sportzal-press 1.png",
+        backgroundImage: Generate_a_image().m(),
+        con: context,
+        navigator: '/Home_screen',
       )
     );
   }
 }
+
+
+
