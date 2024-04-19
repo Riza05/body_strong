@@ -1,10 +1,11 @@
-import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/Generate_a_image.dart';
-import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/Main_menus_screens.dart';
-import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/scroll_menu_items_widget.dart';
+import 'package:body_strong/Screens/Widgets/Generate_a_image.dart';
+import 'package:body_strong/Screens/Widgets/Generating_a_motivational_text.dart';
+import 'package:body_strong/Screens/MainScreens/HomeScreen/Main_menus_screens.dart';
 import 'package:flutter/material.dart';
 
-class Foot_main_screen extends StatelessWidget {
-  const Foot_main_screen({super.key});
+//Главное меню раздела еда
+class HomeFoot extends StatelessWidget {
+  const HomeFoot({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +13,13 @@ class Foot_main_screen extends StatelessWidget {
       home: Main_menus_screen(
         textTitle: 'BODY STRONG',
         backgroundImage: Generate_a_image().m(),
-        con: context,
-        navigator: "/Home_screen",
+        motivationText: Generating_a_motivational_text().m(),
+        sections: const [
+          "Мои продукты",
+          "Мои рецепты",
+          "Рецепты",
+          "Программа питания",
+        ],
       ),
     );
   }

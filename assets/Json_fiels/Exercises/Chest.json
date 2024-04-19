@@ -1,0 +1,128 @@
+{
+  "chest": [
+    {
+      "gif": "assets/image/Exercises/chest/Жим в кроссовере лежа на наклонной скамье.gif",
+      "name" : "Жим в кроссовере лежа на наклонной скамье"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Жим в рычажном тренажере сидя.gif",
+      "name" : "Жим в рычажном тренажере сидя.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/жим гантелей лежа на горизонтальной скамье.gif",
+      "name" : "жим гантелей лежа на горизонтальной скамье.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Жим гантелями на горизонтальной скамье.gif",
+      "name" : "Жим гантелями на горизонтальной скамье.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Жим гантелями на наклонной скамье.gif",
+      "name" : "Жим гантелями на наклонной скамье.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Жим лежа в Смите на горизонтальной скамьн.gif",
+      "name" : "Жим лежа в Смите на горизонтальной скамьн.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Жим лежа на наклонной скамье 45 градусов.gif",
+      "name" : "Жим лежа на наклонной скамье 45 градусов.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/жим лежа на скамье с отрицательным наклоном.gif",
+      "name" : "жим лежа на скамье с отрицательным наклоном.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Жим лежа с резинкой на горизонтальной скамье.gif",
+      "name" : "Жим лежа с резинкой на горизонтальной скамье.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/жим штанги на горизонтальной скамье.gif",
+      "name" : "жим штанги на горизонтальной скамье.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Наклонный жим в тренажере Хаммер.gif",
+      "name" : "Наклонный жим в тренажере Хаммер.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Отжимания лучника.gif",
+      "name" : "Отжимания лучника.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Отжимания на брусьях в тренажере гравитрон.gif",
+      "name" : "Отжимания на брусьях в тренажере гравитрон.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Отжимания от степ-платформы.gif",
+      "name" : "Отжимания от степ-платформы.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Отжимания с ногами на возвышении.gif",
+      "name" : "Отжимания с ногами на возвышении.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Отжимания с одной рукой на мяче (медболе).gif",
+      "name" : "Отжимания с одной рукой на мяче (медболе).gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Отжимания с широкой постановкой рук.gif",
+      "name" : "Отжимания с широкой постановкой рук.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Пулловер на блоке на горизонтальной скамье.gif",
+      "name" : "Пулловер на блоке на горизонтальной скамье.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Пулловер с гантелей.gif",
+      "name" : "Пулловер с гантелей.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Пулловер с гантелей на фитболе.gif",
+      "name" : "Пулловер с гантелей на фитболе.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Сведение рук в кроссовере.gif",
+      "name" : "Сведение рук в кроссовере.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Сведение рук в кроссовере лежа.gif",
+      "name" : "Сведение рук в кроссовере лежа.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Сведение рук в кроссовере снизу.gif",
+      "name" : "Сведение рук в кроссовере снизу.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Сведение рук в тренажере Бабочка.gif",
+      "name" : "Сведение рук в тренажере Бабочка.gif"
+    },
+
+    {
+      "gif": "assets/image/Exercises/chest/Сведения рук в кроссовере сверху.gif",
+      "name" : "Сведения рук в кроссовере сверху.gif"
+    }
+  ]
+}

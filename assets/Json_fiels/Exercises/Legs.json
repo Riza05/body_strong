@@ -1,0 +1,118 @@
+{
+  "legs": [
+    {
+      "gif": "assets/image/Exercises/legs/Болгарские приседания с гантелями.gif",
+      "name": "Болгарские приседания с гантелями"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Болгарские приседания с резиной.gif",
+      "name": "Болгарские приседания с резиной"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Болгарские приседания со штангой.gif",
+      "name": "Болгарские приседания со штангой"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Выпады с гантелями.gif",
+      "name": "Выпады с гантелями"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Выпады со штангой.gif",
+      "name": "Выпады со штангой"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Жим ногами в тренажере.gif",
+      "name": "Жим ногами в тренажере"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Наклоны с гантелями на одной ноге.gif",
+      "name": "Наклоны с гантелями на одной ноге"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Наклоны со штангой на одной ноге.gif",
+      "name": "Наклоны со штангой на одной ноге"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Наклоны со штангой на плечах.gif",
+      "name": "Наклоны со штангой на плечах"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Обратные выпады с гантелями.gif",
+      "name": "Обратные выпады с гантелями"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Обратные выпады со штангой га плечах.gif",
+      "name": "Обратные выпады со штангой на плечах"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Приведения ноги на нижнем блоке.gif",
+      "name": "Приведения ноги на нижнем блоке"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Приседание с резиной.gif",
+      "name": "Приседание с резиной"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Приседания Зерчера.gif",
+      "name": "Приседания Зерчера"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Приседания с гантелями.gif",
+      "name": "Приседания с гантелями"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Приседания со штангой.gif",
+      "name": "Приседания со штангой"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Приседания со штангой на груди.gif",
+      "name": "Приседания со штангой на груди"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Приседания сумо с гантелей.gif",
+      "name": "Приседания сумо с гантелей"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Разведение ног в тренажере.gif",
+      "name": "Разведение ног в тренажере"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Разгибание ног в тренажере.gif",
+      "name": "Разгибание ног в тренажере"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Румынская тяга.gif",
+      "name": "Румынская тяга"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Сведения ног в тренажере.gif",
+      "name": "Сведения ног в тренажере"
+    },
+
+    {
+      "gif": "assets/image/Exercises/legs/Сгибание ног в тренажере лежа.gif",
+      "name": "Сгибание ног в тренажере лежа"
+    }
+  ]
+}

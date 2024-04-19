@@ -20,6 +20,7 @@ class Registration_screen_1 extends StatelessWidget {
 }
 
 class _TextField extends StatelessWidget {
+  String name = "";
   _TextField({super.key});
   final _GlobalKey = GlobalKey<FormState>();
 
@@ -32,6 +33,7 @@ class _TextField extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
+              initialValue: name,
             validator: (value) {
               if (value == null || value.isNotEmpty) {
                 return null;
@@ -62,8 +64,7 @@ class _TextField extends StatelessWidget {
                 }
               },
               child: const Text('Submit'),
-            ),
-          ]
+            ),]
         ),
       )
     );

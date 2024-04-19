@@ -1,0 +1,68 @@
+{
+  "triceps": [
+    {
+      "gif": "assets/image/Exercises/triceps/Алмазные отжимания.gif",
+      "name": "Алмазные отжимания"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Жим узким хватом со штангой.gif",
+      "name": "Жим узким хватом со штангой"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Жим штанги узким хватом на наклонной скамье.gif",
+      "name": "Жим штанги узким хватом на наклонной скамье"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Обратные отжимания от скамьи.gif",
+      "name": "Обратные отжимания от скамьи"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Отжимания на брусьях в гравитроне.gif",
+      "name": "Отжимания на брусьях в гравитроне"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Разгибание рук на блоке.gif",
+      "name": "Разгибание рук на блоке"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Разгибание рук на блоке в наклоне.gif",
+      "name": "Разгибание рук на блоке в наклоне"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Разгибание рук на нижнем блоке из-за головы.gif",
+      "name": "Разгибание рук на нижнем блоке из-за головы"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Разгибание руки с гантелей в наклоне.gif",
+      "name": "Разгибание руки с гантелей в наклоне"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Французкий жим со штангой.gif",
+      "name": "Французкий жим со штангой"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Французский жим с гантелей.gif",
+      "name": "Французкий жим с гантелей"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Французский жим со штангой обратным хватом.gif",
+      "name": "Французкий жим со штангой обратным хватом"
+    },
+
+    {
+      "gif": "assets/image/Exercises/triceps/Французский жим со штангой сидя из-за головы.gif",
+      "name": "Французкий жим со штангой сидя из-за головы"
+    }
+  ]
+}

@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.5 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,13 +35,24 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   percent_indicator: ^4.0.1
-  google_fonts: ^6.1.0
-  imageview360: ^1.3.0
+  google_fonts: 6.1.0
   http: ^1.1.0
-  google_maps_flutter: ^2.5.1
-  sqflite: ^2.3.0
+  sqflite: any
   path_provider: ^2.1.1
   table_calendar: ^3.0.9
+  pedometer:  ^4.0.1
+  google_maps_flutter: 2.5.3
+  shared_preferences: ^2.2.3
+  image_picker: ^1.0.8
+  circular_countdown_timer: ^0.2.3
+  location: ^5.0.0
+  flutter_polyline_points: ^2.0.0
+  flutter_local_notifications: ^17.1.2
+  socket_io_client: ^2.0.3+1
+  video_player: ^2.8.6
+  camera: ^0.11.0+1
+  emoji_picker_flutter: ^2.2.0
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -86,44 +97,278 @@ flutter:
      - assets/pngwing.com.png
      - assets/png-clipart-fitness-fitness.png
      - assets/AeDYoPkHqrL6hO.gif
-     - assets/image/30-year-old man with big muscles.jpg
-     - assets/image/_Inner and Outer Strength Man Testing the Limits o.jpg
-     - assets/image/a female athlete with a tanned.jpg
-     - assets/image/a female athlete with a tanned (1).jpg
-     - assets/image/a female athlete with a tanned (2).jpg
-     - assets/image/a female athlete with a tanned (3).jpg
-     - assets/image/a female athlete with a tanned (4).jpg
-     - assets/image/a female athlete with a tanned (5).jpg
-     - assets/image/a female athlete with a tanned (6).jpg
-     - assets/image/a female athlete with a tanned (7).jpg
-     - assets/image/a female athlete with a tanned (8).jpg
-     - assets/image/a male athlete with a tanned.jpg
-     - assets/image/a male athlete with a tanned (1).jpg
-     - assets/image/a male athlete with a tanned (2).jpg
-     - assets/image/a male athlete with a tanned (3).jpg
-     - assets/image/a male athlete with a tanned (4).jpg
-     - assets/image/Fitness girl wears sport bra (1).jpg
-     - assets/image/Generate an image of a handsome.jpg
-     - assets/image/Generate an image of a handsome (1).jpg
-     - assets/image/Muscular sweaty heavyweight alpha men with broad a.jpg
-     - assets/image/photo of thin muscular woman.jpg
-     - assets/image/photo of thin muscular woman (1).jpg
-     - assets/image/portrait of a stunningly beautiful male fairy in s.jpg
-     - assets/image/real photo a female athlete with a tanned.jpg
-     - assets/image/real photo a female athlete with a tanned (1).jpg
-     - assets/image/real photo a male athlete with a tanned.jpg
-     - assets/image/real photo a male athlete with a tanned (1) (1).jpg
-     - assets/image/real photo a male athlete with a tanned (2).jpg
-     - assets/image/real photo a male athlete with a tanned (3).jpg
-     - assets/image/real photo a male athlete with a tanned (5).jpg
-     - assets/image/real photo a male athlete with a tanned (7).jpg
-     - assets/image/real photo a male athlete with a tanned (4) (1).jpg
-     - assets/image/Strong biceps.jpg
-     - assets/image/Two Muscular sweaty heavyweight alpha men with bro.jpg
-     - assets/abs/0ySzRi0HYVHUfU.gif
-     - assets/abs/1K1d3tyB4CYmN3.gif
+     - assets/image/Exercises/Background image/30-year-old man with big muscles.jpg
+     - assets/image/Exercises/Background image/_Inner and Outer Strength Man Testing the Limits o.jpg
+     - assets/image/Exercises/Background image/a female athlete with a tanned.jpg
+     - assets/image/Exercises/Background image/a female athlete with a tanned (1).jpg
+     - assets/image/Exercises/Background image/a female athlete with a tanned (2).jpg
+     - assets/image/Exercises/Background image/a female athlete with a tanned (3).jpg
+     - assets/image/Exercises/Background image/a female athlete with a tanned (4).jpg
+     - assets/image/Exercises/Background image/a female athlete with a tanned (5).jpg
+     - assets/image/Exercises/Background image/a female athlete with a tanned (6).jpg
+     - assets/image/Exercises/Background image/a female athlete with a tanned (7).jpg
+     - assets/image/Exercises/Background image/a female athlete with a tanned (8).jpg
+     - assets/image/Exercises/Background image/a male athlete with a tanned.jpg
+     - assets/image/Exercises/Background image/a male athlete with a tanned (1).jpg
+     - assets/image/Exercises/Background image/a male athlete with a tanned (2).jpg
+     - assets/image/Exercises/Background image/a male athlete with a tanned (3).jpg
+     - assets/image/Exercises/Background image/a male athlete with a tanned (4).jpg
+     - assets/image/Exercises/Background image/Fitness girl wears sport bra (1).jpg
+     - assets/image/Exercises/Background image/Generate an image of a handsome.jpg
+     - assets/image/Exercises/Background image/Generate an image of a handsome (1).jpg
+     - assets/image/Exercises/Background image/Muscular sweaty heavyweight alpha men with broad a.jpg
+     - assets/image/Exercises/Background image/photo of thin muscular woman.jpg
+     - assets/image/Exercises/Background image/photo of thin muscular woman (1).jpg
+     - assets/image/Exercises/Background image/portrait of a stunningly beautiful male fairy in s.jpg
+     - assets/image/Exercises/Background image/real photo a female athlete with a tanned.jpg
+     - assets/image/Exercises/Background image/real photo a female athlete with a tanned (1).jpg
+     - assets/image/Exercises/Background image/real photo a male athlete with a tanned.jpg
+     - assets/image/Exercises/Background image/real photo a male athlete with a tanned (1) (1).jpg
+     - assets/image/Exercises/Background image/real photo a male athlete with a tanned (2).jpg
+     - assets/image/Exercises/Background image/real photo a male athlete with a tanned (3).jpg
+     - assets/image/Exercises/Background image/real photo a male athlete with a tanned (5).jpg
+     - assets/image/Exercises/Background image/real photo a male athlete with a tanned (7).jpg
+     - assets/image/Exercises/Background image/real photo a male athlete with a tanned (4) (1).jpg
+     - assets/image/Exercises/Background image/Strong biceps.jpg
+     - assets/image/Exercises/Background image/Two Muscular sweaty heavyweight alpha men with bro.jpg
+     - assets/image/Exercises/abs/0ySzRi0HYVHUfU.gif
+     - assets/image/Exercises/abs/1K1d3tyB4CYmN3.gif
+     - assets/image/Exercises/abs/1N7VvvXAiMpVwJ.gif
+     - assets/image/Exercises/abs/1yqvk4LQPvwybt.gif
+     - assets/image/Exercises/abs/FdwFEQmRVEXnJK.gif
+     - assets/image/Exercises/abs/RZMcbhAcwWoB4b.gif
+     - assets/image/Exercises/abs/ZHjbCHkmPqXmAL.gif
+     - assets/image/Exercises/back/Шраги со штангой.gif
+     - assets/image/Exercises/back/3O1-V8AH2UHq1o.gif
+     - assets/image/Exercises/back/103uFv47RSnZxw.gif
+     - assets/image/Exercises/back/e7bb3b0ba4911c6abf8a2e05bed03a2e.gif
+     - assets/image/Exercises/back/einarmiges_rudern_am_latzug-sitzend.gif
+     - assets/image/Exercises/back/hEYc4x5ojEEGqe.gif
+     - assets/image/Exercises/back/hintere_schulter_uebungen-butterfly_reverse_kabelzug-liegend.gif
+     - assets/image/Exercises/back/hyperextensions_maschine.gif
+     - assets/image/Exercises/back/kabelrudern_breit-sitzend.gif
+     - assets/image/Exercises/back/kabelrudern_eng-sitzend.gif
+     - assets/image/Exercises/back/kh_rudern-obergriff-schraegbank.gif
+     - assets/image/Exercises/back/kh_rudern-untergriff-schraegbank.gif
+     - assets/image/Exercises/back/klimmzuege_ueben-stehend.gif
+     - assets/image/Exercises/back/kurzhantel_rudern_untergriff-schraegbank.gif
+     - assets/image/Exercises/back/latissimus_uebungen-rudern_geraet_breiter_untergriff.gif
+     - assets/image/Exercises/back/latziehen_enger_griff-seilzug.gif
+     - assets/image/Exercises/back/latziehen_zur_brust-einarmig.gif
+     - assets/image/Exercises/back/latzug_muskeln-latziehen_eng_zum_nacken.gif
+     - assets/image/Exercises/back/latzug_ruecken-latzug_maschine_obergriff.gif
+     - assets/image/Exercises/back/latzug_ruecken-latzug_maschine_untergriff.gif
+     - assets/image/Exercises/back/latzug_uebungen-latzug_zum_nacken.gif
+     - assets/image/Exercises/back/lh_rudern-t_hantel.gif
+     - assets/image/Exercises/back/LK9LeXe6oPsvwy.gif
+     - assets/image/Exercises/back/nacken_uebungen_fuer_zuhause-kurzhantel_nackenziehen-brustlehne.gif
+     - assets/image/Exercises/back/nackenuebungen_bodybuilding-nackenheben_langhantel-multipresse.gif
+     - assets/image/Exercises/back/nackenuebungen_bodybuilding-nackenheben_maschine.gif
+     - assets/image/Exercises/back/QwoG6klND8PMNf.gif
+     - assets/image/Exercises/back/rudern_einarmig-kabelzug.gif
+     - assets/image/Exercises/back/rudern_einarmig-maschine.gif
+     - assets/image/Exercises/back/rudern_muskeln-rudern_maschine-enger_griff.gif
+     - assets/image/Exercises/back/rudern_sitzend-kabelzug-breiter_obergriff.gif
+     - assets/image/Exercises/back/t_bar_ruderzug.gif
+     - assets/image/Exercises/back/uebungen_unterer_ruecken_im_stehen-kreuzheben_am_geraet.gif
+     - assets/image/Exercises/back/vorgebeugtes_langhantelrudern_untergriff-multipresse.gif
+     - assets/image/Exercises/back/vorgebeugtes_rudern_einarmig-kurzhantel.gif
+     - assets/image/Exercises/back/YbjoVfsloS6I0O.gif
+     - assets/image/Exercises/back/Гиперэкстензия на скамье.gif
+     - assets/image/Exercises/back/Гиперэкстензия на фитболе.gif
+     - assets/image/Exercises/back/Гиперэкстензия.gif
+     - assets/image/Exercises/back/Подтягивание обратным хватом.gif
+     - assets/image/Exercises/back/Подтягивания обратным хватом в тренажере.gif
+     - assets/image/Exercises/back/Подтягивания парралельным хватом.gif
+     - assets/image/Exercises/back/Подтягивания прямым хватом в тренажере.gif
+     - assets/image/Exercises/back/Подтягивания узким обратным хватом.gif
+     - assets/image/Exercises/back/Подтягивания широким хватом.gif
+     - assets/image/Exercises/back/Подтягования перекрестные.gif
+     - assets/image/Exercises/back/Пуловер со штангой на наклонной скамье.gif
+     - assets/image/Exercises/back/Пуловер со штангой.gif
+     - assets/image/Exercises/back/Становая тяга.gif
+     - assets/image/Exercises/back/Становя тяга с гантелями.gif
+     - assets/image/Exercises/back/Тяга блока сверху в кроссовере.gif
+     - assets/image/Exercises/back/Тяга блока сверху за головой.gif
+     - assets/image/Exercises/back/Тяга блока сверху узким хватом.gif
+     - assets/image/Exercises/back/Тяга блока сверху.gif
+     - assets/image/Exercises/back/Тяга штанги в наклоне обратным хватом.gif
+     - assets/image/Exercises/back/Тяга штанги в наклоне прямым хватом.gif
+     - assets/image/Exercises/back/ш.gif
+     - assets/image/Exercises/back/Шраги с гантелями сидя.gif
+     - assets/image/Exercises/back/Шраги с гантелями.gif
+     - assets/image/Exercises/back/Шраги с резинкой.gif
+     - assets/image/Exercises/triceps/Алмазные отжимания.gif
+     #- assets/image/Exercises/triceps/Жим узким хватом с гантелями параллельным хватом.gif
+     - assets/image/Exercises/triceps/Жим узким хватом со штангой.gif
+     - assets/image/Exercises/triceps/Жим штанги узким хватом на наклонной скамье.gif
+     #- assets/image/Exercises/triceps/Жим штанги узким хватом с широко раставленными локтями.gif
+     - assets/image/Exercises/triceps/Обратные отжимания от скамьи.gif
+     - assets/image/Exercises/triceps/Отжимания на брусьях в гравитроне.gif
+     - assets/image/Exercises/triceps/Разгибание рук на блоке.gif
+     - assets/image/Exercises/triceps/Разгибание рук на блоке в наклоне.gif
+     - assets/image/Exercises/triceps/Разгибание рук на нижнем блоке из-за головы.gif
+     - assets/image/Exercises/triceps/Разгибание руки с гантелей в наклоне.gif
+     - assets/image/Exercises/triceps/Французкий жим со штангой.gif
+     - assets/image/Exercises/triceps/Французский жим с гантелей.gif
+     #- assets/image/Exercises/triceps/Французский жим с гантелями параллельным хватом.gif
+     - assets/image/Exercises/triceps/Французский жим со штангой обратным хватом.gif
+     - assets/image/Exercises/triceps/Французский жим со штангой сидя из-за головы.gif
+     #- assets/image/Exercises/triceps/Французский жим со штангой узким хватом на скамье с отрицательным наклоном.gif
+     #Грудь
+     - assets/image/Exercises/chest/Жим в кроссовере лежа на наклонной скамье.gif
+     - assets/image/Exercises/chest/Жим в рычажном тренажере сидя.gif
+     - assets/image/Exercises/chest/жим гантелей лежа на горизонтальной скамье.gif
+     - assets/image/Exercises/chest/Жим гантелями на горизонтальной скамье.gif
+     - assets/image/Exercises/chest/Жим гантелями на наклонной скамье.gif
+     #- assets/image/Exercises/chest/Жим гантелями на скамье с отрицательным наклоном.gif
+     - assets/image/Exercises/chest/Жим лежа в Смите на горизонтальной скамьн.gif
+     #- assets/image/Exercises/chest/Жим лежа на наклонной скамье в тренажере Смитта.gif
+     - assets/image/Exercises/chest/Жим лежа на наклонной скамье 45 градусов.gif
+     - assets/image/Exercises/chest/жим лежа на скамье с отрицательным наклоном.gif
+     #- assets/image/Exercises/chest/Жим лежа на скамье с отрицательным наклоном обратным хватом.gif
+     - assets/image/Exercises/chest/Жим лежа с резинкой на горизонтальной скамье.gif
+     - assets/image/Exercises/chest/жим штанги на горизонтальной скамье.gif
+     - assets/image/Exercises/chest/Наклонный жим в тренажере Хаммер.gif
+     - assets/image/Exercises/chest/Отжимания лучника.gif
+     - assets/image/Exercises/chest/Отжимания на брусьях в тренажере гравитрон.gif
+     - assets/image/Exercises/chest/Отжимания от степ-платформы.gif
+     - assets/image/Exercises/chest/Отжимания с ногами на возвышении.gif
+     - assets/image/Exercises/chest/Отжимания с одной рукой на мяче (медболе).gif
+     - assets/image/Exercises/chest/Отжимания с широкой постановкой рук.gif
+     - assets/image/Exercises/chest/Пулловер на блоке на горизонтальной скамье.gif
+     - assets/image/Exercises/chest/Пулловер с гантелей.gif
+     - assets/image/Exercises/chest/Пулловер с гантелей на фитболе.gif
+     #- assets/image/Exercises/chest/Разведение гантелей лежа на горизонтальной скамье.gif
+     - assets/image/Exercises/chest/Сведение рук в кроссовере.gif
+     - assets/image/Exercises/chest/Сведение рук в кроссовере лежа.gif
+     #- assets/image/Exercises/chest/Сведение рук в кроссовере на горизонтальной скамье.gif
+     - assets/image/Exercises/chest/Сведение рук в кроссовере снизу.gif
+     - assets/image/Exercises/chest/Сведение рук в тренажере Бабочка.gif
+     - assets/image/Exercises/chest/Сведения рук в кроссовере сверху.gif
+     #- assets/image/Exercises/chest/Сведения рук в кроссовере сверху стоя в наклоне.gif
+     #Ноги
+     - assets/image/Exercises/legs/Болгарские приседания с гантелями.gif
+     - assets/image/Exercises/legs/Болгарские приседания с резиной.gif
+     - assets/image/Exercises/legs/Болгарские приседания со штангой.gif
+     - assets/image/Exercises/legs/Выпады с гантелями.gif
+     - assets/image/Exercises/legs/Выпады со штангой.gif
+     - assets/image/Exercises/legs/Жим ногами в тренажере.gif
+     - assets/image/Exercises/legs/Наклоны с гантелями на одной ноге.gif
+     - assets/image/Exercises/legs/Наклоны со штангой на одной ноге.gif
+     - assets/image/Exercises/legs/Наклоны со штангой на плечах.gif
+     - assets/image/Exercises/legs/Обратные выпады с гантелями.gif
+     - assets/image/Exercises/legs/Обратные выпады со штангой га плечах.gif
+     - assets/image/Exercises/legs/Приведения ноги на нижнем блоке.gif
+     - assets/image/Exercises/legs/Приседание с резиной.gif
+     - assets/image/Exercises/legs/Приседания Зерчера.gif
+     - assets/image/Exercises/legs/Приседания с гантелями.gif
+     - assets/image/Exercises/legs/Приседания со штангой.gif
+     - assets/image/Exercises/legs/Приседания со штангой на груди.gif
+     - assets/image/Exercises/legs/Приседания сумо с гантелей.gif
+     - assets/image/Exercises/legs/Разведение ног в тренажере.gif
+     - assets/image/Exercises/legs/Разгибание ног в тренажере.gif
+     - assets/image/Exercises/legs/Румынская тяга.gif
+     - assets/image/Exercises/legs/Сведения ног в тренажере.gif
+     - assets/image/Exercises/legs/Сгибание ног в тренажере лежа.gif
+     #Плечи
+     - assets/image/Exercises/shoulders/63qT68naeoi4UR.gif
+     - assets/image/Exercises/shoulders/butterfly_reverse_kabelzug-liegend.gif
+     - assets/image/Exercises/shoulders/frontdruecken_maschine.gif
+     - assets/image/Exercises/shoulders/FtUJpXU6GteAf4.gif
+     - assets/image/Exercises/shoulders/HohEyBOHlhYHXD.gif
+     - assets/image/Exercises/shoulders/IGXkIpFjerG2wO.gif
+     - assets/image/Exercises/shoulders/JIxBe2nxEWzbs-.gif
+     - assets/image/Exercises/shoulders/OuU0a1ctLD7myN.gif
+     - assets/image/Exercises/shoulders/schulteruebungen_kabelzug_schulterdruecken.gif
+     - assets/image/Exercises/shoulders/Армейски жим гантелями сидя.gif
+     - assets/image/Exercises/shoulders/Армейский жим с гантелями стоя.gif
+     - assets/image/Exercises/shoulders/Армейский жим сидя в тренажере Смита.gif
+     - assets/image/Exercises/shoulders/Армейский жим стоя в тренажере Смита.gif
+     - assets/image/Exercises/shoulders/Жим гантелей стоя с супинацией.gif
+     - assets/image/Exercises/shoulders/Жим из-за головы.gif
+     - assets/image/Exercises/shoulders/Жим штанги из-за головы сидя.gif
+     #- assets/image/Exercises/shoulders/Жим штанги сидя от груди и за голову по переменно.gif
+     - assets/image/Exercises/shoulders/Махи перед собой с резиной.gif
+     - assets/image/Exercises/shoulders/Махи рук в сторону нижнего блока.gif
+     - assets/image/Exercises/shoulders/Махи рук в тренажере.gif
+     - assets/image/Exercises/shoulders/Махи рукой в сторону с гантелей.gif
+     - assets/image/Exercises/shoulders/Махи рукой в сторону с резиной.gif
+     - assets/image/Exercises/shoulders/Махи рукой перед собой нижнего блока.gif
+     - assets/image/Exercises/shoulders/Махи с гантелями в наклоне.gif
+     - assets/image/Exercises/shoulders/Махи с гантелями лежа на наклонной скамье.gif
+     #- assets/image/Exercises/shoulders/Отведение рук с верхнего блока на заднюю дельту в кроссовере.gif
+     - assets/image/Exercises/shoulders/Подъем штанги перед собой стоя.gif
+     - assets/image/Exercises/shoulders/Разведение гантелей в сторону сидя.gif
+     - assets/image/Exercises/shoulders/Разведение гантелей в сторону стоя.gif
+     - assets/image/Exercises/shoulders/Разведение рук в тренажере обратная бабочка.gif
+     - assets/image/Exercises/shoulders/Разведение рук сидя в наклоне.gif
+     - assets/image/Exercises/shoulders/Тяга к подбородку нижнего блока.gif
+     - assets/image/Exercises/shoulders/Тяга к подбородку с гантелями.gif
+     - assets/image/Exercises/shoulders/Тяга к подбородку со штангой.gif
+     #Ягодицы
+     - assets/image/Exercises/buttocks/Глубокий присед со штангой.gif
+     - assets/image/Exercises/buttocks/Зашагивание на тумбу одной ногой с резиной.gif
+     - assets/image/Exercises/buttocks/Наклоны со штангой.gif
+     - assets/image/Exercises/buttocks/Наклоны со штангой на одной ноге.gif
+     - assets/image/Exercises/buttocks/Отведение ноги назад на нижнем блоке.gif
+     - assets/image/Exercises/buttocks/Румынская тяга в тренажере Смита.gif
+     - assets/image/Exercises/buttocks/Румынская тяга с резиной.gif
+     - assets/image/Exercises/buttocks/Тяга нижнего блока стоя спиной к тренажеру.gif
+     - assets/image/Exercises/buttocks/Ягодичный мостик со штангой.gif
+     #- assets/image/Exercises/buttocks/Ягодичный мостик со штангой с фиксацией ног на скамье.gif
+     #Предплечья
+     #- assets/image/Exercises/forearms/Згибание Зоттмана со штангой на скамье Скотта.gif
+     #- assets/image/Exercises/forearms/Сгибание Зоттмана со штангой.gif
+     #- assets/image/Exercises/forearms/Сгибание кистей обратным хватом со штангой с упором на колени.gif
+     #- assets/image/Exercises/forearms/Сгибание кистей обратным хватом со штангой с упором на скамью.gif
+     #- assets/image/Exercises/forearms/Сгибание кистей со штангой с упором на колени.gif
+     #- assets/image/Exercises/forearms/Сгибание кистей со штангой с упором на скамью.gif
+     #- assets/image/Exercises/forearms/Сгибание кисти с гантелей парралельным хватом с упором на колено.gif
+     #- assets/image/Exercises/forearms/Сгибание кисти сидя с резиной.gif
+     #- assets/image/Exercises/forearms/Сгибание кисти сидя с резиной обратным хватом.gif
+     #- Фотографии для статей
+     - assets/image/Articles/close-up-runner-shoes-with-red-laces_23-2148381975.jpg
+     - assets/image/Articles/displeased-young-sportsman-have-painful-feelings-leg_171337-7749.jpg
+     - assets/image/Articles/fit-young-man-with-beautiful-torso-blue-wall_155003-7910.jpg
+     - assets/image/Articles/closeup-shot-fresh-fruits-with-different-medicine-wooden-spoon.jpg
+     - assets/image/Articles/side-view-sporty-woman-holding-bottle-water_23-2148429274.jpg
+     - assets/image/Articles/bottle-water-with-tape-measure_1150-258.jpg
+     - assets/image/Articles/female-athlete-doing-physical-effort-stepper-doctor-follows-her-sports-laboratory_482257-31674.jpg
+     - assets/image/Articles/containers-dumbbells-arrangement_23-2149080625.jpg
+     - assets/image/Articles/happy-man-laying-bedroom_23-2148253887.jpg
+     - assets/image/Articles/high-angle-man-holding-smartphone_23-2150172343.jpg
+     - assets/image/Articles/smiling-young-woman-listening-music-headphone-near-river_23-2147925369.jpg
+     - assets/image/Articles/male-athlete-injured-his-shoulder-gym-s-workout_637285-8320 (1).jpg
+     - assets/image/Articles/stylish-guy-gym-relaxing-floor-eating-healthy-food_78826-2817.jpg
+     - assets/image/Articles/sports-couple-sportswear-training-gym_1157-30535.jpg
+     - assets/image/Articles/workout-plan-template-with-modern-style_23-2147913670.jpg
+     - assets/image/Articles/sport-man-with-runner-street-be-running-exercise_1150-5978.jpg
+     - assets/image/Articles/crop-hand-putting-vegetables-near-dishes_23-2147778296.jpg
+     - assets/image/Articles/young-athletic-woman-having-cross-training-stationary-bike-gym_637285-2524.jpg
+     - assets/image/Articles/full-shot-fit-woman-doing-burpees_23-2149326088.jpg
+     - assets/image/Articles/bald-muscular-man-holding-chain_23-2147687680.jpg
+     - assets/image/Articles/medium-shot-unrecognizable-male-athlete-wiping-sweat-with-towel-seated-gym-changing-room_1098-18871.jpg
+     - assets/image/Articles/group-women-working-out-together-gym_23-2148430227.jpg
+     - assets/image/Articles/people-training-athletics_23-2151077719.jpg
+     - assets/image/Articles/medium-shot-woman-training-gym_23-2148768864.jpg
+     - assets/image/Articles/sports-accessories-fitness-dark-floor-healthy-lifestyle-concept-top-view_639032-1841.jpg
+     - assets/image/Articles/gym-composition-with-sport-elements_23-2147915643.jpg
+     - assets/image/Articles/measuring-spoon-with-casein-creatine-powdered-food-supplements-protein-amino-acid-used-by-athletes_72932-2947.jpg
+     - assets/image/Articles/sporty-man-resting-having-break-after-doing-exercise_484651-7996.jpg
+     - assets/image/Articles/shirtless-athletic-young-man-with-towel-water-bottle-after_7502-5020.jpg
      - assets/Icon/filter.png
+     - assets/Json_fiels/Exercises/Triceps.json
+     - assets/Json_fiels/Exercises/Forearms.json
+     - assets/Json_fiels/Exercises/Buttocks.json
+     - assets/Json_fiels/Exercises/Shoulders.json
+     - assets/Json_fiels/Exercises/Legs.json
+     - assets/Json_fiels/Exercises/Chest.json
      - assets/Json_fiels/Exercises/Abs.json
+     - assets/Json_fiels/Exercises/Back.json
+     - assets/Json_fiels/Articles.json
+     - assets/Icon/icon_telegram.png
+     - assets/Icon/icon_whatsapp.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
