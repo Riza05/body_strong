@@ -1,3 +1,4 @@
+import 'package:body_strong/DB/db_modal.dart';
 import 'package:body_strong/Screens/Input_and_Registration_screens/Registration_screens/Model.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,8 @@ class Registration_screen_1 extends StatelessWidget {
 }
 
 class _TextField extends StatelessWidget {
+  DatabaseHelp databaseHelp = DatabaseHelp as DatabaseHelp;
+  String name = "";
   _TextField({super.key});
   final _GlobalKey = GlobalKey<FormState>();
 
@@ -32,6 +35,7 @@ class _TextField extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
+              initialValue: name,
             validator: (value) {
               if (value == null || value.isNotEmpty) {
                 return null;
@@ -62,8 +66,7 @@ class _TextField extends StatelessWidget {
                 }
               },
               child: const Text('Submit'),
-            ),
-          ]
+            ),]
         ),
       )
     );

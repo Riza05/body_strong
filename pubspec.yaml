@@ -35,13 +35,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   percent_indicator: ^4.0.1
-  google_fonts: ^6.1.0
+  google_fonts: 6.1.0
   imageview360: ^1.3.0
   http: ^1.1.0
-  google_maps_flutter: ^2.5.1
-  sqflite: ^2.3.0
+  sqflite: ^2.3.2
   path_provider: ^2.1.1
   table_calendar: ^3.0.9
+  pedometer: ^4.0.1
+  google_maps_flutter: 2.5.3
+  shared_preferences: 2.2.2
+  image_picker: ^1.0.8
 
 dev_dependencies:
   flutter_test:
@@ -120,10 +123,78 @@ flutter:
      - assets/image/real photo a male athlete with a tanned (4) (1).jpg
      - assets/image/Strong biceps.jpg
      - assets/image/Two Muscular sweaty heavyweight alpha men with bro.jpg
-     - assets/abs/0ySzRi0HYVHUfU.gif
-     - assets/abs/1K1d3tyB4CYmN3.gif
+     - assets/image/Exercises/abs/0ySzRi0HYVHUfU.gif
+     - assets/image/Exercises/abs/1K1d3tyB4CYmN3.gif
+     - assets/image/Exercises/abs/1N7VvvXAiMpVwJ.gif
+     - assets/image/Exercises/abs/1yqvk4LQPvwybt.gif
+     - assets/image/Exercises/abs/FdwFEQmRVEXnJK.gif
+     - assets/image/Exercises/abs/RZMcbhAcwWoB4b.gif
+     - assets/image/Exercises/abs/ZHjbCHkmPqXmAL.gif
+     - assets/image/Exercises/back/Шраги со штангой.gif
+     - assets/image/Exercises/back/3O1-V8AH2UHq1o.gif
+     - assets/image/Exercises/back/103uFv47RSnZxw.gif
+     - assets/image/Exercises/back/e7bb3b0ba4911c6abf8a2e05bed03a2e.gif
+     - assets/image/Exercises/back/einarmiges_rudern_am_latzug-sitzend.gif
+     - assets/image/Exercises/back/hEYc4x5ojEEGqe.gif
+     - assets/image/Exercises/back/hintere_schulter_uebungen-butterfly_reverse_kabelzug-liegend.gif
+     - assets/image/Exercises/back/hyperextensions_maschine.gif
+     - assets/image/Exercises/back/kabelrudern_breit-sitzend.gif
+     - assets/image/Exercises/back/kabelrudern_eng-sitzend.gif
+     - assets/image/Exercises/back/kh_rudern-obergriff-schraegbank.gif
+     - assets/image/Exercises/back/kh_rudern-untergriff-schraegbank.gif
+     - assets/image/Exercises/back/klimmzuege_ueben-stehend.gif
+     - assets/image/Exercises/back/kurzhantel_rudern_untergriff-schraegbank.gif
+     - assets/image/Exercises/back/latissimus_uebungen-rudern_geraet_breiter_untergriff.gif
+     - assets/image/Exercises/back/latziehen_enger_griff-seilzug.gif
+     - assets/image/Exercises/back/latziehen_zur_brust-einarmig.gif
+     - assets/image/Exercises/back/latzug_muskeln-latziehen_eng_zum_nacken.gif
+     - assets/image/Exercises/back/latzug_ruecken-latzug_maschine_obergriff.gif
+     - assets/image/Exercises/back/latzug_ruecken-latzug_maschine_untergriff.gif
+     - assets/image/Exercises/back/latzug_uebungen-latzug_zum_nacken.gif
+     - assets/image/Exercises/back/lh_rudern-t_hantel.gif
+     - assets/image/Exercises/back/LK9LeXe6oPsvwy.gif
+     - assets/image/Exercises/back/nacken_uebungen_fuer_zuhause-kurzhantel_nackenziehen-brustlehne.gif
+     - assets/image/Exercises/back/nackenuebungen_bodybuilding-nackenheben_langhantel-multipresse.gif
+     - assets/image/Exercises/back/nackenuebungen_bodybuilding-nackenheben_maschine.gif
+     - assets/image/Exercises/back/QwoG6klND8PMNf.gif
+     - assets/image/Exercises/back/rudern_einarmig-kabelzug.gif
+     - assets/image/Exercises/back/rudern_einarmig-maschine.gif
+     - assets/image/Exercises/back/rudern_muskeln-rudern_maschine-enger_griff.gif
+     - assets/image/Exercises/back/rudern_sitzend-kabelzug-breiter_obergriff.gif
+     - assets/image/Exercises/back/t_bar_ruderzug.gif
+     - assets/image/Exercises/back/uebungen_unterer_ruecken_im_stehen-kreuzheben_am_geraet.gif
+     - assets/image/Exercises/back/vorgebeugtes_langhantelrudern_untergriff-multipresse.gif
+     - assets/image/Exercises/back/vorgebeugtes_rudern_einarmig-kurzhantel.gif
+     - assets/image/Exercises/back/YbjoVfsloS6I0O.gif
+     - assets/image/Exercises/back/Гиперэкстензия на скамье.gif
+     - assets/image/Exercises/back/Гиперэкстензия на фитболе.gif
+     - assets/image/Exercises/back/Гиперэкстензия.gif
+     - assets/image/Exercises/back/Подтягивание обратным хватом.gif
+     - assets/image/Exercises/back/Подтягивания обратным хватом в тренажере.gif
+     - assets/image/Exercises/back/Подтягивания парралельным хватом.gif
+     - assets/image/Exercises/back/Подтягивания прямым хватом в тренажере.gif
+     - assets/image/Exercises/back/Подтягивания узким обратным хватом.gif
+     - assets/image/Exercises/back/Подтягивания широким хватом.gif
+     - assets/image/Exercises/back/Подтягования перекрестные.gif
+     - assets/image/Exercises/back/Пуловер со штангой на наклонной скамье.gif
+     - assets/image/Exercises/back/Пуловер со штангой.gif
+     - assets/image/Exercises/back/Становая тяга.gif
+     - assets/image/Exercises/back/Становя тяга с гантелями.gif
+     - assets/image/Exercises/back/Тяга блока сверху в кроссовере.gif
+     - assets/image/Exercises/back/Тяга блока сверху за головой.gif
+     - assets/image/Exercises/back/Тяга блока сверху узким хватом.gif
+     - assets/image/Exercises/back/Тяга блока сверху.gif
+     - assets/image/Exercises/back/Тяга штанги в наклоне обратным хватом.gif
+     - assets/image/Exercises/back/Тяга штанги в наклоне прямым хватом.gif
+     - assets/image/Exercises/back/ш.gif
+     - assets/image/Exercises/back/Шраги с гантелями сидя.gif
+     - assets/image/Exercises/back/Шраги с гантелями.gif
+     - assets/image/Exercises/back/Шраги с резинкой.gif
      - assets/Icon/filter.png
      - assets/Json_fiels/Exercises/Abs.json
+     - assets/Json_fiels/Exercises/Back.json
+     - assets/Icon/icon_telegram.png
+     - assets/Icon/icon_whatsapp.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

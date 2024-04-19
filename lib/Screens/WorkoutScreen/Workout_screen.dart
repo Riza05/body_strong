@@ -1,7 +1,7 @@
-import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/Generate_a_image.dart';
-import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/Main_menus_screens.dart';
-import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/scroll_menu_items_widget.dart';
 import 'package:body_strong/Screens/MainScreens/home_screen.dart';
+import 'package:body_strong/Screens/Widgets/Generate_a_image.dart';
+import 'package:body_strong/Screens/Widgets/Generating_a_motivational_text.dart';
+import 'package:body_strong/Screens/WorkoutScreen/workout_menus.dart';
 import 'package:flutter/material.dart';
 
 class Workout_screen extends StatelessWidget {
@@ -10,11 +10,20 @@ class Workout_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Main_menus_screen(
+      home: Workout_menus(
         textTitle: "BODY WORKOUT",
         backgroundImage: Generate_a_image().m(),
-        con: context,
-        navigator: '/Home_screen',
+        motivationText: Generating_a_motivational_text().m(),
+        sections: const [
+          "Тренировки в зале",
+          "Тренировки дома/улице",
+          "Мои упражнения",
+          "Разминка",
+          "Табата",
+          "Замеры",
+          "Программы",
+          "Мои тренировки",
+        ],
       )
     );
   }

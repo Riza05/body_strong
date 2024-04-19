@@ -6,28 +6,54 @@ class Articles_screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          leading: BackButton(
+            color: Colors.white,
+            onPressed: (){
+              Navigator.pop(context);
+            },
+          ),
+          actions: [
+            IconButton(
+              onPressed: (){},
+              icon: Icon(Icons.filter_list_alt)
+            )
+          ],
+          backgroundColor: Colors.transparent,
+          elevation: 0
+        ),
         body: Container(
+          height: double.infinity,
+          width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
               fit: BoxFit.cover
             )
           ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  IconButton(
+          child: ListView.builder(
+            padding: EdgeInsets.only(top: 80),
+            itemCount: 7,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Column(
+                  children: [
+                    const Image(
+                      height: 200,
+                      width: 200,
+                      image: AssetImage("assets/na-avy-parni-44.jpg")),
+                    ElevatedButton(
                       onPressed: (){},
-                      icon: const ImageIcon(AssetImage("assets/Icon/filter.png"))
-                  ),
-                  IconButton(
-                      onPressed: (){},
-                      icon: Icon(Icons.backspace_sharp)
-                  ),
-                ]
-              ),
-            ]
+                      child: const Text("KKKKKKK", style: TextStyle(
+                        fontSize: 26,
+                      ))
+                    )
+                  ],
+                ),
+              );
+            }
           ),
         )
       )
@@ -35,30 +61,3 @@ class Articles_screen extends StatelessWidget {
   }
 }
 
-class _List_articles extends StatelessWidget {
-  const _List_articles({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 20,
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          child: Column(
-            children: [
-              const Image(
-                image: AssetImage("assets/na-avy-parni-44.jpg"),
-                height: 200,
-                width: 200
-              ),
-              ElevatedButton(
-                onPressed: (){},
-                child: Text("jjjjjwjjw", style: TextStyle(fontSize: 26)),
-              )
-            ]
-          )
-        );
-      }
-    );
-  }
-}

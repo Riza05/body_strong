@@ -1,4 +1,4 @@
-import 'package:body_strong/Screens/WorkoutScreen/exercise_template.dart';
+import 'package:body_strong/Screens/WorkoutScreen/exercises_template.dart';
 import 'package:flutter/material.dart';
 
 class Abs extends StatelessWidget {
@@ -6,6 +6,13 @@ class Abs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Exercise_template("abs", "gif", "name");
+    return Exercises_template(
+      "abs",
+      "gif",
+      "name",
+      "/Exercise_template",
+      context,
+      "assets/Json_fiels/Exercises/Abs.json"
+    );
   }
 }

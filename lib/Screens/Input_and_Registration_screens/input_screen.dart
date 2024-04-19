@@ -1,8 +1,7 @@
-import 'package:body_strong/Screens/%D0%A1ommon_widgets_screens/Generating_a_motivational_text.dart';
+import 'package:body_strong/Screens/Widgets/Generate_a_image.dart';
+import 'package:body_strong/Screens/Widgets/Generating_a_motivational_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../Сommon_widgets_screens/Generate_a_image.dart';
 
 class Input_screen extends StatelessWidget {
   const Input_screen({super.key});
@@ -48,6 +47,14 @@ class Input_screen extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   color: Colors.white
                 ),textAlign: TextAlign.center),
+
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: _Form()
+                  )
+                ),
+
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20),
@@ -55,7 +62,7 @@ class Input_screen extends StatelessWidget {
                       children: [
                         SizedBox(
                           height: 50,
-                          width: 210,
+                          width: 210 ,
                           child: ElevatedButton(onPressed: () {
                             Navigator.pushNamed(context, "/Home_screen");
                           },
@@ -121,16 +128,6 @@ class _Form extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     )
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Validate returns true if the form is valid, or false otherwise.
-                    if (_GlobalKey.currentState!.validate()) {
-                      // If the form is valid, display a snackbar. In the real world,
-                      // you'd often call a server or save the information in a database.
-                    }
-                  },
-                  child: const Text('Submit'),
                 ),
               ]
           ),
