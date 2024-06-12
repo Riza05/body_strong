@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 
 //Страница с конкретной темой
 class ArticlesInformation extends StatefulWidget {
-  const ArticlesInformation(
-      {super.key, required this.image, required this.description});
+  const ArticlesInformation({
+    required this.image,
+    required this.description
+  });
+
   final String image;
   final String description;
 
@@ -16,40 +19,34 @@ class _ArticlesInformationState extends State<ArticlesInformation> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            extendBodyBehindAppBar: true,
-            appBar: AppBar(
-                leading: BackButton(
-                  color: Colors.white,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                backgroundColor: Colors.transparent,
-                elevation: 0),
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+          appBar: ThemeColorAndfont().backScreen(context),
             body: Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
-                        fit: BoxFit.cover)),
+              height: double.infinity,
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
+                    fit: BoxFit.cover)
+              ),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 120),
-                  child: Column(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: ListView(
                     children: [
-                      Expanded(
-                        child: ListView(
-                          children: [
-                            Image(image: AssetImage(widget.image)),
-                            Text(widget.description,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18))
-                          ],
-                        ),
-                      )
-                    ],
+                      Image(image: AssetImage(widget.image)),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 30),
+                            child: Text(widget.description,
+                              style: TextStyle(
+                                color: Colors.white, fontSize: 18)
                   ),
-                ))));
+                )
+              ],
+            )
+          )
+        )
+      )
+    );
   }
 }

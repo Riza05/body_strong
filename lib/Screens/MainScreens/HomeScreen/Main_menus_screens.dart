@@ -1,20 +1,20 @@
-import 'package:body_strong/Pqw.dart';
-import 'package:body_strong/Screens/FootScreens/MyProducts/CreateRecipe/Ingredients.dart';
+import 'package:body_strong/Screens/Chat/Homescreen.dart';
+import 'package:body_strong/Screens/Pedometer/home_pedometer.dart';
 import 'package:body_strong/themeColorAndfont.dart';
-import 'package:body_strong/Screens/MainScreens/Events_screen.dart';
+import 'package:body_strong/Screens/Map/HomeMap.dart';
 import 'package:body_strong/Screens/Profil/profil_sreens.dart';
 import 'package:body_strong/Screens/Articles/articles_template_json.dart';
 import 'package:body_strong/Screens/FootScreens/foot_main_screen.dart';
 import 'package:body_strong/Screens/Setting/home_setting.dart';
-import 'package:body_strong/Screens/WorkoutScreen/Workout_screen.dart';
+import 'package:body_strong/Screens/WorkoutScreen/home_workout.dart';
 import 'package:flutter/material.dart';
 
 //Обработчик меню для всех разделов
 class Main_menus_screen extends StatefulWidget {
-  String textTitle;
-  String backgroundImage;
-  String motivationText;
-  List sections;
+  final String textTitle;
+  final String backgroundImage;
+  final String motivationText;
+  final List sections;
 
   Main_menus_screen({
     required this.textTitle,
@@ -30,13 +30,13 @@ class Main_menus_screen extends StatefulWidget {
 class _Main_menus_screenState extends State<Main_menus_screen> {
   List<Widget> widgets = [
     Profil(),
-    Ingredients(),
-    Workout_screen(),
-    MyApp(),
+    HomeWorkout(),
     HomeFoot(),
+    HomePedometer(),
     ArticlesTemplateJson(),
+    Homescreen(),
+    HomeSetting(),
     Maps(),
-    Home_setting(),
   ];
 
   final ScrollController _controller = ScrollController();

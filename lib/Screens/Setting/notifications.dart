@@ -37,9 +37,14 @@ class Notifications {
   }
 }
 
-class IIII extends StatelessWidget {
+/*class NotificationsPage extends StatefulWidget {
   const IIII({super.key});
 
+  @override
+  State<IIII> createState() => _IIIIState();
+}
+
+class _IIIIState extends State<IIII> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,7 +53,7 @@ class IIII extends StatelessWidget {
           padding: const EdgeInsets.all(30.0),
           child: ElevatedButton(
             onPressed: (){
-              Notifications.scheduledNotification("Риза", "все работает", 1, 2);
+              Notifications.scheduledNotification("Риза", "все работает", 0, 2);
             },
             child: Text("jjjdjjd"),
           ),
@@ -56,5 +61,5 @@ class IIII extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 

@@ -357,6 +357,11 @@ flutter:
      - assets/image/Articles/measuring-spoon-with-casein-creatine-powdered-food-supplements-protein-amino-acid-used-by-athletes_72932-2947.jpg
      - assets/image/Articles/sporty-man-resting-having-break-after-doing-exercise_484651-7996.jpg
      - assets/image/Articles/shirtless-athletic-young-man-with-towel-water-bottle-after_7502-5020.jpg
+     #Табата
+     - assets/image/Tabata/12408d103615133.5f50d1babfbbd.jpg
+     - assets/image/Tabata/imgpreview.jpeg
+     - assets/image/Tabata/shutterstock_535512460.jpg
+     - assets/image/Tabata/poza-figura-muscle-myshtsy-muscles-press-atlet-bodybuildi-10.jpg
      - assets/Icon/filter.png
      - assets/Json_fiels/Exercises/Triceps.json
      - assets/Json_fiels/Exercises/Forearms.json

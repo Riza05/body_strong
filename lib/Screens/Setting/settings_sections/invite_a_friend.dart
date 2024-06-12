@@ -1,12 +1,10 @@
 import 'package:body_strong/Screens/Setting/settings_sections/setting_sections_template.dart';
 import 'package:flutter/material.dart';
 
-class InviteFriend extends StatelessWidget {
-  const InviteFriend({super.key});
-
+class InviteAFriend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SettingSectionTemplate(_InviteFriend(), "Пригласи друга");
+    return SettingSectionTemplate(_InviteFriend(),"Пригласи друга");
   }
 }
 
@@ -22,18 +20,29 @@ class _InviteFriendState extends State<_InviteFriend> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        Text("Разница между желанием и достижением-это дисциплина. В команде с надежным другом достичь дисциплины будет гораздо проще и гораздо легче"),
-        Icon(Icons.access_time_filled_outlined),
-        ElevatedButton(
-          onPressed: (){},
-          child: Text("Пригласить друга",
-            style: TextStyle(
-              fontSize: 26
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 340,
+            ),
+              child: Text("Разница между желанием и достижением-это дисциплина. В команде с надежным другом достичь дисциплины будет гораздо проще и гораздо легче",
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold
+              )
             )
-          )
-        )
-      ]
+          ),
+          ElevatedButton(
+              onPressed: (){},
+              child: Text("Пригласить друга",
+                  style: TextStyle(
+                      fontSize: 26
+                  )
+              )
+          ),
+        ],
     );
   }
 }

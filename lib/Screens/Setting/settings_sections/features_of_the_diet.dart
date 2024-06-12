@@ -32,28 +32,62 @@ class _FeaturesOfTheDietState extends State<_FeaturesOfTheDiet> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: [
-        ListTile(
-          onTap: () => onAllClicked(allChecked),
-          leading: Checkbox(
-            value: allChecked.value,
-            onChanged: (value) => onAllClicked(allChecked)
-          ),
-          title: Text(allChecked.title),
-        ),
-        Divider(),
-        ...checkBoxList.map((item) =>
-            ListTile(
-              onTap: () => onItemClicked(item),
-              leading: Checkbox(
-                  value: item.value,
-                  onChanged: (value) => onItemClicked(item)
+        Expanded(
+          child: ListView(
+            children: [
+              ListTile(
+                onTap: () => onAllClicked(allChecked),
+                leading: Checkbox(
+                    side: BorderSide(color: Colors.white),
+                    checkColor: Colors.black,
+                    activeColor: Color(0xFFFAFF00),
+                  value: allChecked.value,
+                  onChanged: (value) => onAllClicked(allChecked)
+                ),
+                title: Text(allChecked.title,style: TextStyle(color: Colors.white)),
               ),
-              title: Text(item.title),
-            ),
-        ).toList()
-      ]
+              Divider(),
+              ...checkBoxList.map((item) =>
+                  ListTile(
+                    onTap: () => onItemClicked(item),
+                    leading: Checkbox(
+                      side: BorderSide(color: Colors.white),
+                        checkColor: Colors.black,
+                        activeColor: Color(0xFFFAFF00),
+                        value: item.value,
+                        onChanged: (value) => onItemClicked(item)
+                    ),
+                    title: Text(item.title, style: TextStyle(color: Colors.white)),
+                  ),
+              ).toList()
+            ]
+          ),
+        ),
+        ElevatedButton(
+          onPressed: (){
+            showDialog(
+              context: context,
+              builder: (context) {
+                Future.delayed(Duration(seconds: 3), () {
+                  Navigator.pop(context);
+                });
+                return AlertDialog(
+                  content: SingleChildScrollView(
+                    child: ListBody(
+                      children: const <Widget>[
+                        Text("Данные сохранены успешно"),
+                      ],
+                    ),
+                  ),
+                );
+              }
+            );
+          },
+          child: Text("Сохранить")
+        )
+      ],
     );
   }
 

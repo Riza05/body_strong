@@ -1,36 +1,43 @@
+import 'package:body_strong/Screens/Setting/notifications.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/features_of_the_diet.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/invite_a_friend.dart';
+import 'package:body_strong/Screens/Setting/settings_sections/notification_of_reminders.dart';
+import 'package:body_strong/Screens/Setting/settings_sections/subscription.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/support.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/user_account.dart';
-import 'package:body_strong/Screens/Widgets/Generate_a_image.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 
-class Home_setting extends StatefulWidget {
-  Home_setting({super.key});
+class HomeSetting extends StatelessWidget {
+  HomeSetting({super.key});
 
-  List<Widget> widget = [
-    User_account(),
-    FeaturesOfTheDiet(),
-    InviteFriend(),
-    Support()
-  ];
-
-  @override
-  State<Home_setting> createState() => _Home_settingState();
-}
-
-class _Home_settingState extends State<Home_setting> {
   List _settings = [
     "Личные данные",
     "Особенности рациона",
     "Подписка",
     "Уведомление",
     "Пригласи друга",
-    "Промокод",
     "Поддержка",
-    "Часто задаваемые вопросы",
     "О нас"
+  ];
+
+  List <IconData> icons = [
+    Icons.account_circle,
+    Icons.no_meals_sharp,
+    Icons.no_meals_sharp,
+    Icons.notification_add,
+    Icons.no_meals_sharp,
+    Icons.support_agent,
+    Icons.support_agent,
+  ];
+
+  List<Widget> wid = [
+    User_account(),
+    FeaturesOfTheDiet(),
+    Subscription(),
+    NotificationOfReminders(),
+    InviteAFriend(),
+    Support()
   ];
 
   @override
@@ -61,23 +68,29 @@ class _Home_settingState extends State<Home_setting> {
                 child: ListView.builder(
                   itemCount: _settings.length,
                   itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: SizedBox(
-                          height: 50,
-                          width: 100,
-                          child: ElevatedButton(
-                            onPressed: (){
-                              Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => widget.widget[index]
-                                )
-                              );
-                            },
-                            child: Text(_settings[index], style: TextStyle(
-                              fontSize: 26,
-                            )),
+                      return Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Row(
+                                children: [
+                                  Icon(icons[index], color: Colors.white),
+                                  TextButton(
+                                    onPressed: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => wid[index]));
+                                    },
+                                    child: Text(_settings[index], style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white
+                                    ))),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+                          Divider()
+                        ],
                       );
                   }
                 ),

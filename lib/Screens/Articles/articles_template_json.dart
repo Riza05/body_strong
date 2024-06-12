@@ -29,14 +29,12 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
       home: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-            leading: BackButton(
-              color: Colors.white,
-              onPressed: (){
-                Navigator.pop(context);
-              },
-            ),
-            backgroundColor: Colors.transparent,
-            elevation: 0
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {},
+            )
+          ]
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -57,32 +55,32 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
                 child: ListView.builder(
                   itemCount: _articles.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        Image(
-                          image: AssetImage(_articles[index]["img"]),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 15),
-                          child: SizedBox(
-                            width: 365,
-                            child: ElevatedButton(
-                              onPressed: (){
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ArticlesInformation(
-                                      image: _articles[index]["img"],
-                                      description: _articles[index]["description"]
-                                    )
-                                  )
-                                );
-                              },
-                              child: Text(_articles[index]["name"])
-                            ),
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+                      child: Column(
+                        children: [
+                          Image(
+                            image: AssetImage(_articles[index]["img"]),
                           ),
-                        )
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15),
+                              child: ElevatedButton(
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ArticlesInformation(
+                                        image: _articles[index]["img"],
+                                        description: _articles[index]["description"]
+                                      )
+                                    )
+                                  );
+                                },
+                                child: Text(_articles[index]["name"])
+                              ),
+                            ),
+                        ],
+                      ),
                     );
                   }
                 )
@@ -94,3 +92,4 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
     );
   }
 }
+

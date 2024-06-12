@@ -3,7 +3,6 @@ import 'package:body_strong/Screens/WorkoutScreen/Muscle_groupe/exercise_templat
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Exercises_template extends StatefulWidget {
   Exercises_template(
@@ -12,7 +11,7 @@ class Exercises_template extends StatefulWidget {
     this.name,
     this.nav,
     this.con,
-    this.muscle
+    this.muscle,
   );
 
   String muscle_group;
@@ -57,7 +56,7 @@ class _Exercises_templateState extends State<Exercises_template> {
                       padding: const EdgeInsets.only(top: 80),
                       child: ElevatedButton(onPressed: (){
                         readJsonFile();
-                      }, child: Text("ssss")),
+                      }, child: Text("kkkkk")),
                     ),
                     _json.isNotEmpty ? Expanded(child: ListView.builder(
                         padding: EdgeInsets.only(top: 80),
@@ -85,7 +84,7 @@ class _Exercises_templateState extends State<Exercises_template> {
                                                   MaterialPageRoute(
                                                     builder: (context) => Exercise_template(
                                                       _json[index][widget.gif],
-                                                      _json[index][widget.name]
+                                                      _json[index][widget.name],
                                                     )
                                                   )
                                                 );

@@ -7,12 +7,12 @@ String formatDate(DateTime d) {
   return d.toString().substring(0, 19);
 }
 
-class MyApp extends StatefulWidget {
+class HomePedometer extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _HomePedometerState createState() => _HomePedometerState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _HomePedometerState extends State<HomePedometer> {
   late Stream<StepCount> _stepCountStream;
   late Stream<PedestrianStatus> _pedestrianStatusStream;
   String _status = '?', _steps = '?';

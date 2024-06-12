@@ -24,7 +24,7 @@ class _ProfilState extends State<Profil> {
                   },
                   icon: const Icon(
                     Icons.arrow_back,
-                    size: 40,
+                    size: 25,
                     color: Color(0xFFFAFF00),
                   )
                 ),
@@ -37,7 +37,7 @@ class _ProfilState extends State<Profil> {
                     },
                     icon: const Icon(
                       Icons.add,
-                      size: 40,
+                      size: 25,
                       color: Color(0xFFFAFF00),
                     )
                   )
@@ -69,49 +69,10 @@ class _ProfilState extends State<Profil> {
                   const Padding(
                     padding: EdgeInsets.only(top: 35),
                   ),
-                  /*const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _Icon(),
-                    _Icon(),
-                    _Icon(),
-                    _Icon(),
-                  ]
-                ),*/
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 35),
-                        child: btn("Посты"),
-                      ),
-                    ],
-                  ),
                 ]
               )
             ),
         ),
     );
   }
-}
-
-Widget btn(String nameBtn) {
-  SizedBox a = SizedBox(
-      height: 60,
-      width: 210,
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFAFF00)),
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
-          ),
-        ),
-        onPressed: () {},
-        child: Text(nameBtn,
-            style: const TextStyle(
-              fontSize: 26,
-            )),
-      ));
-  return a;
 }

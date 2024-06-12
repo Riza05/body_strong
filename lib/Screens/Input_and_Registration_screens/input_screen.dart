@@ -61,15 +61,17 @@ class _Input_screenState extends State<Input_screen> {
           ),
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                 Text("BODY STRONG", style: TextStyle(
-                fontSize: 38)),
+                fontSize: 36)),
               ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: 400, maxWidth: 400),
                 child: Text(Generating_a_motivational_text().m(), style: TextStyle(
-                  fontSize: 26
-                ), textAlign: TextAlign.center,),
+                  fontSize: 26,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500
+                ), textAlign: TextAlign.center),
               ),
               SingleChildScrollView(
                    child: Padding(

@@ -1,11 +1,11 @@
-import 'package:body_strong/Screens/WorkoutScreen/Measurements/measurements_screen.dart';
+import 'package:body_strong/Screens/WorkoutScreen/Measurements/homeMeasurements.dart';
 import 'package:body_strong/Screens/WorkoutScreen/MyExercises/My_exercises_screen.dart';
+import 'package:body_strong/Screens/WorkoutScreen/MyTraningAndViewCalendarTraning/MyTraning/homeMyTraning.dart';
 import 'package:body_strong/Screens/WorkoutScreen/Tabata_and_warm/tabata_screen.dart';
-import 'package:body_strong/Screens/WorkoutScreen/Training_programs/traning_programs.dart';
+import 'package:body_strong/Screens/WorkoutScreen/Warm-up/warm-up_screen.dart';
 import 'package:body_strong/Screens/WorkoutScreen/Workout/home_workout.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Workout_menus extends StatefulWidget {
   final String textTitle;
@@ -14,7 +14,6 @@ class Workout_menus extends StatefulWidget {
   final List sections;
 
   const Workout_menus({
-    super.key,
     required this.textTitle,
     required this.backgroundImage,
     required this.motivationText,
@@ -28,11 +27,12 @@ class Workout_menus extends StatefulWidget {
 class _Workout_menusState extends State<Workout_menus> {
   List<Widget> a = [
     HomeWorkout(),
-    HomeWorkout(),
     MyExercises(),
-    Training_programs(),
+    HomeMyTraning(),
+    HomeWorkout(),
     Tabata(),
-    Measurements()
+    WarmUp(),
+    HomeMeasurements(),
   ];
 
   final ScrollController _controller = ScrollController();
@@ -106,7 +106,7 @@ class _Workout_menusState extends State<Workout_menus> {
                               padding: const EdgeInsets.only(top: 40),
                               child: SizedBox(
                                 height: 50,
-                                width: 100,
+                                width: 300,
                                 child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(

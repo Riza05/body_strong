@@ -1,5 +1,5 @@
+import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Measurements extends StatefulWidget {
   const Measurements({super.key});
@@ -9,10 +9,27 @@ class Measurements extends StatefulWidget {
 }
 
 class _MeasurementsState extends State<Measurements> {
-  final String counterKey = "counter";
-  final textqqq = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final ell = TextEditingController();
+
   String a = "";
   String b = "";
+  String c = "";
+
+  List listController = [
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+  ];
+
   final List<String> musculGroups = [
     "Вес",
     "Шея",
@@ -28,135 +45,74 @@ class _MeasurementsState extends State<Measurements> {
   ];
 
   @override
-  void initState() {
-    _initCounter();
-    super.initState();
-  }
-
-  Future _initCounter() async {
-    a = await _getCounter();
-  }
-
-  void _incrementCounter() async {
-    setState(() {
-      a;
-    });
-
-    await _setCounter();
-  }
-
-  Future _setCounter() async {
-    var prefs = await SharedPreferences.getInstance();
-    prefs.setString(counterKey,textqqq.text);
-  }
-
-  Future _getCounter() async {
-    var prefs = await SharedPreferences.getInstance();
-    return prefs.getString(counterKey);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            extendBodyBehindAppBar: true,
-            appBar: AppBar(
-                leading: BackButton(
-                  color: Colors.white,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                backgroundColor: Colors.transparent,
-                elevation: 0
-            ),
-            body: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
-                      fit: BoxFit.cover
-                    )
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 80.0),
-                      child: Text(a, style: TextStyle(
-                        fontSize: 38
-                      )),
-                    ),
-                    Expanded(
-                        child: ListView.builder(
-                    padding: EdgeInsets.only(top: 50),
-            itemCount: 1,
-            itemBuilder: (BuildContext context, int index) {
-              return TextField(
-                  controller: textqqq,
-                  minLines: 1,
-                  maxLength: 3,
-                  decoration: InputDecoration(
-                      labelText: musculGroups[index],
-                      suffixIcon: Icon(Icons.add),
-                      filled: true,
-                      fillColor: Colors.grey.shade200,
-                      labelStyle: const TextStyle(fontSize: 18, color: Colors.black38),
-                      border: const OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(color: Colors.yellow, width: 2.0)
-                      )
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: ThemeColorAndfont().backScreen(context),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+            image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
+              fit: BoxFit.cover
+            )
+          ),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: musculGroups.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: const EdgeInsets.all(8),
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.grey.withOpacity(.2)),
+                          child: TextFormField(
+                            controller: listController[index],
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Поле не должно быть пустым";
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                                hintText: "Название",
+                                hintStyle: TextStyle(color: Colors.white)
+                            ),
+                          ),
+                        );
+                      }
                   )
-              );
-            }
-        ),
-                      ),
-                    ElevatedButton(onPressed: () {
-                      _incrementCounter();
-                    }, child: Text("LLL")
-                    ),
-            ],
+                ),
+                Container(
+                    height: 55,
+                    width: MediaQuery.of(context).size.width * .9,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8)),
+                    child: ElevatedButton(
+                        onPressed: () async {
+                          if (formKey.currentState!.validate()) {
+                            final String a = listController[0].text;
+                            final String b = listController[1].text;
+                            final String c = listController[2].text;
+                          }
+                        },
+                        child: const Text("Войти", style: TextStyle(
+                            fontSize: 20
+                        )
+                    )
+                  )
+                ),
+              ],
+            )
           )
         )
       )
     );
   }
-}
-
-Widget text(TextEditingController textEditingController) {
-  final List<String> musculGroups = [
-    "Вес",
-    "Шея",
-    "Плечи",
-    "Грудь",
-    "Бицепс",
-    "Предплечья",
-    "Спина",
-    "Талия",
-    "Ягодицы",
-    "Бедра",
-    "Голень",
-  ];
-  return ListView.builder(
-    padding: EdgeInsets.only(top: 50),
-    itemCount: 10,
-    itemBuilder: (BuildContext context, int index) {
-      return TextField(
-        controller: textEditingController,
-          minLines: 1,
-          maxLength: 3,
-          decoration: InputDecoration(
-            labelText: musculGroups[index],
-              suffixIcon: Icon(Icons.add),
-              filled: true,
-              fillColor: Colors.grey.shade200,
-              labelStyle: const TextStyle(fontSize: 18, color: Colors.black38),
-              border: const OutlineInputBorder(),
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Colors.yellow, width: 2.0)
-              )
-          )
-      );
-    }
-  );
 }

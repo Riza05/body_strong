@@ -1,4 +1,5 @@
 import 'package:body_strong/Screens/Widgets/Generate_a_image.dart';
+import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,20 +16,7 @@ class _SettingSectionTemplateState extends State<SettingSectionTemplate> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-          fontFamily: GoogleFonts.kronaOne().fontFamily,
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Color(0xFFFAFF00)),
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50.0)),
-              ),
-            ),
-          ),
-        ),
+        theme: ThemeColorAndfont().themeColorAndfont(context),
         home: Scaffold(
             extendBodyBehindAppBar: true,
             appBar: AppBar(

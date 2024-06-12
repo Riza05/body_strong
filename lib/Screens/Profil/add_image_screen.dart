@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -64,49 +65,64 @@ class _AddImageState extends State<AddImage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
+      theme: ThemeColorAndfont().themeColorAndfont(context),
+      home: Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        leading: const Icon(Icons.add, size: 30),
-        actions: [
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Icon(Icons.access_time))
-        ],
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: Center(
-          child: Column(
-            children: [
-              ElevatedButton(
-                  child: const Text("Pick Image from Gallery",
-                      style: TextStyle(color: Colors.white)),
-                  onPressed: () async {
-                    await _pickImagefromGallery();
-                  }),
-              ElevatedButton(
-                  child: const Text("Pick Image from Camera",
-                      style: TextStyle(color: Colors.white)),
-                  onPressed: () async {
-                    await _pickImagefromCamera();
-                  }),
-              isImageSelected
-                  ? Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image(
-                          image: FileImage(imageFile!),
-                        ),
+      appBar: ThemeColorAndfont().backScreen(context),
+      body: Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
+                fit: BoxFit.cover
+              )
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 100),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: 150,
+                        child: ElevatedButton(
+                            child: const Text("Открыть галерею", textAlign: TextAlign.center),
+                            onPressed: () async {
+                              await _pickImagefromGallery();
+                            }),
                       ),
-                    )
-                  : Container()
-            ],
+                      SizedBox(
+                        width: 150,
+                        child: ElevatedButton(
+                            child: const Text("Открыть камеру", textAlign: TextAlign.center),
+                            onPressed: () async {
+                              await _pickImagefromCamera();
+                            }),
+                      ),
+                    ],
+                  ),
+                  isImageSelected
+                      ? Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image(image: FileImage(imageFile!)),
+                                  ElevatedButton(onPressed: (){}, child: Text("Опубликовать"))
+                                ],
+                              ),
+                            ),
+                          ),
+                        ) : Container()
+                ],
+              ),
+            ),
           ),
         ),
-      ),
     );
   }
 }

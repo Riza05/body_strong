@@ -4,8 +4,8 @@ import 'package:body_strong/Screens/Widgets/Generating_a_motivational_text.dart'
 import 'package:body_strong/Screens/WorkoutScreen/workout_menus.dart';
 import 'package:flutter/material.dart';
 
-class Workout_screen extends StatelessWidget {
-  const Workout_screen({super.key});
+class HomeWorkout extends StatelessWidget {
+  const HomeWorkout({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +15,13 @@ class Workout_screen extends StatelessWidget {
         backgroundImage: Generate_a_image().m(),
         motivationText: Generating_a_motivational_text().m(),
         sections: const [
-          "Тренировки в зале",
-          "Тренировки дома/улице",
+          "Упражнения",
           "Мои упражнения",
+          "Мои тренировки",
           "Разминка",
           "Табата",
-          "Замеры",
           "Программы",
-          "Мои тренировки",
+          "Замеры",
         ],
       )
     );

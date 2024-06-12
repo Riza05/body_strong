@@ -1,3 +1,4 @@
+import 'package:body_strong/Screens/WorkoutScreen/MyTraningAndViewCalendarTraning/MyTraning/savingExercises.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,6 +60,15 @@ class _Exercise_templateState extends State<Exercise_template> {
                 Text("Техника выполнения", style: TextStyle(fontSize: 26)),
                 Text("Туда сюда", style: TextStyle(fontSize: 26)),
                 Text("Туда сюда", style: TextStyle(fontSize: 26)),
+                ElevatedButton(onPressed: (){
+                  Navigator.push(
+                    context, MaterialPageRoute(
+                      builder: (context) => SavingExercises(widget.avatar, widget.nameExercise, 0)
+                      )
+                    );
+                },
+                  child: Text("Добавить упражнение"),
+                )
               ],
             )
           ),
