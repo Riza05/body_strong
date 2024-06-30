@@ -34,13 +34,16 @@ class _InviteFriendState extends State<_InviteFriend> {
               )
             )
           ),
-          ElevatedButton(
-              onPressed: (){},
-              child: Text("Пригласить друга",
-                  style: TextStyle(
-                      fontSize: 26
-                  )
-              )
+          SizedBox(
+            height: 60,
+            child: ElevatedButton(
+                onPressed: (){},
+                child: Text("Пригласить друга",
+                    style: TextStyle(
+                        fontSize: 18
+                    )
+                )
+            ),
           ),
         ],
     );

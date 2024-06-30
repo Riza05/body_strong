@@ -55,6 +55,7 @@
 	<key>Приложение просит разрешить определить местополежине</key>
 	<String>NSLocationAlwaysAndWhenInUseUsageDescription</String>
 	<key>Приложение просит разрешить</key>
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Доступ к геолокации пользователя необходим для отображения текущей геопозиции</string>
 </dict>
 </plist>

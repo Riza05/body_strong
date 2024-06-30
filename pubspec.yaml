@@ -34,9 +34,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  percent_indicator: ^4.0.1
+  percent_indicator: ^4.2.3
   google_fonts: 6.1.0
   http: ^1.1.0
+  html: ^0.15.4
   sqflite: any
   path_provider: ^2.1.1
   table_calendar: ^3.0.9
@@ -52,7 +53,11 @@ dependencies:
   video_player: ^2.8.6
   camera: ^0.11.0+1
   emoji_picker_flutter: ^2.2.0
-  flutter_svg: ^2.0.10+1
+  provider: ^6.1.2
+  webfeed_plus: ^1.1.1+1
+  yandex_mapkit: ^4.1.0
+  yandex_maps_mapkit_lite: ^4.6.1-beta3
+  geolocator: ^12.0.0
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +85,7 @@ flutter:
   assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+     - assets/output-onlinegiftools.gif
      - assets/26956302.png
      - assets/na-avy-parni-44.jpg
      - assets/iPhone-13-Pro-Max-13.jpg
@@ -372,6 +378,32 @@ flutter:
      - assets/Json_fiels/Exercises/Abs.json
      - assets/Json_fiels/Exercises/Back.json
      - assets/Json_fiels/Articles.json
+     #Табата упражнения
+     - assets/image/Tabata/tabataExercises/1p5aXvvyvJ90l0.gif
+     - assets/image/Tabata/tabataExercises/4pXtT8i8j4-gva.gif
+     - assets/image/Tabata/tabataExercises/4vy6ZpXXv2KBKl.gif
+     - assets/image/Tabata/tabataExercises/BfCxaUgNyectb2.gif
+     - assets/image/Tabata/tabataExercises/biEtygmCBSwo4L.gif
+     - assets/image/Tabata/tabataExercises/gmMKm4cp2Kx1s7.gif
+     - assets/image/Tabata/tabataExercises/HbJj57Sb5FJED8.gif
+     - assets/image/Tabata/tabataExercises/ikCTjVuAAcEasX.gif
+     - assets/image/Tabata/tabataExercises/iZVQoMoQ0BXwWp.gif
+     - assets/image/Tabata/tabataExercises/jEBLe62t0GR79V.gif
+     - assets/image/Tabata/tabataExercises/mJaZiOOtqZX6iq.gif
+     - assets/image/Tabata/tabataExercises/mpQ8qDxTA3dDuP.gif
+     - assets/image/Tabata/tabataExercises/XW0Wp336nWlYsx.gif
+     - assets/image/Tabata/tabataExercises/ykjjeFMe9e6px0.gif
+     - assets/image/Tabata/tabataExercises/Yy0mtBv098gzPQ.gif
+     #kkdk
+     - assets/image/Exercises/musclegroups/back.png
+     - assets/image/Exercises/musclegroups/back (1).png
+     - assets/image/Exercises/musclegroups/back (2).png
+     - assets/image/Exercises/musclegroups/biceps.png
+     - assets/image/Exercises/musclegroups/exercise.png
+     - assets/image/Exercises/musclegroups/gym.png
+     - assets/image/Exercises/musclegroups/human.png
+     - assets/image/Exercises/musclegroups/muscles.png
+     - assets/image/Exercises/musclegroups/muscles (1).png
      - assets/Icon/icon_telegram.png
      - assets/Icon/icon_whatsapp.png
 

@@ -1,6 +1,12 @@
+import 'dart:convert';
+
+import 'package:body_strong/Screens/WorkoutScreen/MyTraningAndViewCalendarTraning/MyTraning/homeMyTraning.dart';
+import 'package:body_strong/Screens/WorkoutScreen/MyTraningAndViewCalendarTraning/MyTraning/obra.dart';
+import 'package:body_strong/Screens/WorkoutScreen/MyTraningAndViewCalendarTraning/MyTraning/traningList.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SavingExercises extends StatefulWidget {
   SavingExercises(
@@ -19,20 +25,32 @@ class SavingExercises extends StatefulWidget {
 final pov = TextEditingController();
 
 class _SavingExercisesState extends State<SavingExercises> {
-  String a = "";
-  TextEditingController kg = TextEditingController();
-  int j = 0;
+  final kg = TextEditingController();
+  final pov = TextEditingController();
 
-  @override
-  void initState() {
-    setState(() {
-      j += 1;
-    });
-    super.initState();
+  List<Traninglist> list = [];
+  late SharedPreferences sharedPreferences;
+
+  getData() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    List<String>? strList = sharedPreferences.getStringList("traningList");
+    if(strList != null) {
+      list = strList.map((item) => Traninglist.fromJson(json.decode(item))).toList();
+    }
   }
 
   @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+  Obra obra = Obra();
+
+  @override
   Widget build(BuildContext context) {
+
+
     return MaterialApp(
       home: Scaffold(
         extendBodyBehindAppBar: true,
@@ -47,7 +65,7 @@ class _SavingExercisesState extends State<SavingExercises> {
             )
           ),
           child: ListView.builder(
-            itemCount: j,
+            itemCount: list.length,
             itemBuilder: (context, index) {
               return Container(
                 height: 150,
@@ -73,14 +91,6 @@ class _SavingExercisesState extends State<SavingExercises> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold
                               )),
-                             IconButton(onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return _dialog(context);
-                                  }
-                                );
-                              }, icon: const Icon(Icons.add))
                             ],
                           ),
                         ),
@@ -102,14 +112,21 @@ class _SavingExercisesState extends State<SavingExercises> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("кг " + a),
-                                    Text("пов " + a)
+                                    Text(list[index].kg),
+                                    Text(list[index].pov
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-                        )
+                        ),
+                      ElevatedButton(
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => HomeMyTraning()));
+                        },
+                        child: Text("Закочнить тренировку")
+                      )
                     ],
                   )
                 ),
@@ -118,8 +135,13 @@ class _SavingExercisesState extends State<SavingExercises> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.pop(context);
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return _dialog(context);
+              }
+            );
           },
           child: Icon(Icons.add),
         ),
@@ -127,7 +149,7 @@ class _SavingExercisesState extends State<SavingExercises> {
     );
   }
 
-  Dialog _dialog(BuildContext con) {
+  Dialog _dialog(BuildContext context) {
     return Dialog(
         backgroundColor: Colors.white,
         child: Container(
@@ -175,8 +197,13 @@ class _SavingExercisesState extends State<SavingExercises> {
                   TextButton(
                     onPressed: (){
                       setState(() {
-                        this.a = kg.text;
-                        Navigator.of(con, rootNavigator: true).pop();
+                        list.insert(0, Traninglist(
+                            kg: kg.text,
+                            pov: kg.text
+                        ));
+                        List<String> strList = list.map((item) => json.encode(item.toJson())).toList();
+                        sharedPreferences.setStringList("traningList", strList);
+                        Navigator.pop(context,"Da");
                       });
                     },
                     child: Text("Сохранить", style: TextStyle(
@@ -184,20 +211,6 @@ class _SavingExercisesState extends State<SavingExercises> {
                       fontSize: 18
                     ))
                   ),
-                  TextButton(
-                      onPressed: (){},
-                      child: Text("Отмена", style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 18
-                      ))
-                  ),
-                  TextButton(
-                      onPressed: (){},
-                      child: Text("Удалить", style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 18
-                      ))
-                  )
                 ],
               )
             ],

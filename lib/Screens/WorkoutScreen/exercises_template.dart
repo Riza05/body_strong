@@ -37,6 +37,12 @@ class _Exercises_templateState extends State<Exercises_template> {
   }
 
   @override
+  void initState() {
+    readJsonFile();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeColorAndfont().themeColorAndfont(context),
@@ -52,12 +58,6 @@ class _Exercises_templateState extends State<Exercises_template> {
               ),
               child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 80),
-                      child: ElevatedButton(onPressed: (){
-                        readJsonFile();
-                      }, child: Text("kkkkk")),
-                    ),
                     _json.isNotEmpty ? Expanded(child: ListView.builder(
                         padding: EdgeInsets.only(top: 80),
                         itemCount: _json.length,

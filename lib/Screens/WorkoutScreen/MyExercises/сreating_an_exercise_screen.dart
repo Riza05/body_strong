@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:body_strong/Screens/WorkoutScreen/MyExercises/My_exercises_screen.dart';
+import 'package:body_strong/Screens/WorkoutScreen/MyExercises/exercisesList.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +25,23 @@ class _CreatingAnExerciseState extends State<CreatingAnExercise>{
   final title = TextEditingController();
   final description = TextEditingController();
   final warning = TextEditingController();
+
+  List<Exerciseslist> list = [];
+  late SharedPreferences sharedPreferences;
+
+  getData() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    List<String>? strList = sharedPreferences.getStringList("exercisesList");
+    if(strList != null) {
+      list = strList.map((item) => Exerciseslist.fromJson(json.decode(item))).toList();
+    }
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
 
   _pickImagefromGallery() async {
     try {
@@ -182,18 +199,15 @@ class _CreatingAnExerciseState extends State<CreatingAnExercise>{
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8)),
                       child: ElevatedButton(
-                          onPressed: () async {
-                            if (formKey.currentState!.validate()) {
-                              final prefs = await SharedPreferences.getInstance();
-                              await prefs.setString("title", title.text);
-                              await prefs.setString("description", description.text);
-                              await prefs.setString("warning", warning.text);
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => MyExercises()));
-
-                              //Login method will be here
-                              //Now we have a response from our sqlite method
-                              //We are going to create a user
-                            }
+                          onPressed: () {
+                              list.insert(0, Exerciseslist(
+                              title: title.text,
+                              description: description.text,
+                              warning: warning.text,
+                              ));
+                              List<String> strList = list.map((item) => json.encode(item.toJson())).toList();
+                              sharedPreferences.setStringList("exercisesList", strList);
+                              Navigator.pop(context,"Data");
                           },
                           child: const Text("Войти", style: TextStyle(
                               fontSize: 20

@@ -1,8 +1,34 @@
+import 'dart:convert';
+
+import 'package:body_strong/Screens/FootScreens/Recipes/recipesHttp.dart';
 import 'package:flutter/material.dart';
+import 'package:webfeed_plus/domain/rss_feed.dart';
+import 'package:http/http.dart' as http;
 
 //Раздел рецептов
-class Recipes extends StatelessWidget {
-  const Recipes({super.key});
+class Recipes extends StatefulWidget {
+  Recipes({super.key});
+
+  @override
+  State<Recipes> createState() => _RecipesState();
+}
+
+class _RecipesState extends State<Recipes> {
+  List _habList = [];
+
+  final url = "https://api.edamam.com/search?q=chicken&app_id=8be75524&app_key=4d63dc59251f649d518f752bece54196&from=0&to=3&calories=591-722&health=alcohol-free";
+
+  getApiData() async {
+    var response = await http.get(Uri.parse(url));
+    Map json = jsonDecode(response.body);
+    print(response.body);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getApiData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +52,34 @@ class Recipes extends StatelessWidget {
               fit: BoxFit.cover
             )
           ),
-          child: _grid(),
+          child: FutureBuilder(
+            future: _getHttpRecipes(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if(!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return Container(
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: _habList.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Text("${_habList[index].title}")
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                  )
+                );
+              }
+            },
+          )
         )
       )
     );
@@ -64,5 +117,14 @@ class Recipes extends StatelessWidget {
         )
       )
     );
+  }
+
+  _getHttpRecipes() async {
+    var response = await fetchHttpRecipes("https://povar.ru/rss");
+    var chanel = RssFeed.parse(response.body);
+    chanel.items!.forEach((element) {
+      _habList.add(element);
+    });
+    return _habList;
   }
 }

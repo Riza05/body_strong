@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 class Generate_a_image {
   Random random = Random();
 
@@ -40,14 +42,23 @@ class Generate_a_image {
     "assets/image/Two Muscular sweaty heavyweight alpha men with bro.jpg",
   ];
 
+  /*AssetImage img() {
+    int min = 0;
+    int max = textMotivationList.length - 1;
+    random = Random();
+    int r = min + random!.nextInt(max - min);
+    String imageName = textMotivationList[r].toString();
+    return AssetImage(imageName);
+  }*/
+
   String m() {
     int index = random.nextInt(textMotivationList.length);
     return textMotivationList[index];
   }
 
-  Future<String> get() async {
-    int index = await random.nextInt(textMotivationList.length);
-    String a = await textMotivationList[index];
-    return Future.value(a);
+  Future<String> getFuture() {
+    int index = random!.nextInt(textMotivationList.length);
+    return Future.value(textMotivationList[index]
+    );
   }
 }

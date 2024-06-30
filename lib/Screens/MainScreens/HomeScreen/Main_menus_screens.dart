@@ -1,12 +1,4 @@
-import 'package:body_strong/Screens/Chat/Homescreen.dart';
-import 'package:body_strong/Screens/Pedometer/home_pedometer.dart';
 import 'package:body_strong/themeColorAndfont.dart';
-import 'package:body_strong/Screens/Map/HomeMap.dart';
-import 'package:body_strong/Screens/Profil/profil_sreens.dart';
-import 'package:body_strong/Screens/Articles/articles_template_json.dart';
-import 'package:body_strong/Screens/FootScreens/foot_main_screen.dart';
-import 'package:body_strong/Screens/Setting/home_setting.dart';
-import 'package:body_strong/Screens/WorkoutScreen/home_workout.dart';
 import 'package:flutter/material.dart';
 
 //Обработчик меню для всех разделов
@@ -15,12 +7,14 @@ class Main_menus_screen extends StatefulWidget {
   final String backgroundImage;
   final String motivationText;
   final List sections;
+  final List widget;
 
   Main_menus_screen({
     required this.textTitle,
     required this.backgroundImage,
     required this.motivationText,
     required this.sections,
+    required this.widget
   });
 
   @override
@@ -28,29 +22,21 @@ class Main_menus_screen extends StatefulWidget {
 }
 
 class _Main_menus_screenState extends State<Main_menus_screen> {
-  List<Widget> widgets = [
-    Profil(),
-    HomeWorkout(),
-    HomeFoot(),
-    HomePedometer(),
-    ArticlesTemplateJson(),
-    Homescreen(),
-    HomeSetting(),
-    Maps(),
-  ];
-
   final ScrollController _controller = ScrollController();
-  bool scroll_visibility = false;
+  bool scroll_visibility = true;
 
   @override
   void initState() {
     _controller.addListener(() {
       if (_controller.position.pixels > 0)
-        scroll_visibility = false;
+        setState(() {
+          scroll_visibility = false;
+        });
       else
-        scroll_visibility = true;
-      setState(() {});
-    });
+        setState(() {
+          scroll_visibility = true;
+        });
+      });
     super.initState();
   }
 
@@ -58,7 +44,7 @@ class _Main_menus_screenState extends State<Main_menus_screen> {
   Widget build(BuildContext context) {
     _controller.addListener(() {});
     return MaterialApp(
-        theme: ThemeColorAndfont().themeColorAndfont(context),
+      theme: ThemeColorAndfont().themeColorAndfont(context),
         home: Scaffold(
             body: Container(
           decoration: BoxDecoration(
@@ -73,7 +59,7 @@ class _Main_menus_screenState extends State<Main_menus_screen> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 80),
                     child: Text(widget.textTitle,
-                        style: TextStyle(fontSize: 38, color: Color(0xFFFAFF00))),
+                      style: ThemeColorAndfont().themeColorAndfont(context).textTheme.titleMedium),
                   ),
                 ),
                 ConstrainedBox(
@@ -93,37 +79,51 @@ class _Main_menus_screenState extends State<Main_menus_screen> {
                 initialChildSize: 0.1,
                 minChildSize: 0.1,
                 maxChildSize: 1,
-                builder: (context, controller) {
+                builder: (context, _controller) {
                   return Container(
                       decoration: BoxDecoration(
                           color: Colors.black.withOpacity(0.5),
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(50),
                               topRight: Radius.circular(50))),
-                      child: ListView.builder(
-                          controller: controller,
-                          itemCount: widget.sections.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(top: 40),
-                                  child: SizedBox(
-                                    height: 50,
-                                    width: 300,
-                                    child: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) => widgets[index]));
-                                        },
-                                        child: Text(widget.sections[index],
-                                            style: TextStyle(fontSize: 26))),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                                controller: _controller,
+                                itemCount: widget.sections.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(top: 40),
+                                        child: SizedBox(
+                                          height: 50,
+                                          width: 300,
+                                          child: ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) => widget.widget[index]));
+                                              },
+                                    child: Text(widget.sections[index],
+                                      style: TextStyle(fontSize: 26)
+                                    )
                                   ),
-                            );
-                          }));
-                })
-          ]),
-        )));
+                                ),
+                              );
+                            }
+                          ),
+                        ),
+                      ],
+                    )
+                  );
+                }
+              )
+            ]
+          ),
+        )
+      )
+    );
   }
 
   Widget q() {

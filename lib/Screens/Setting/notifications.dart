@@ -5,7 +5,7 @@ import 'package:timezone/data/latest_all.dart' as tz;
 
 class Notifications {
   static final _notification = FlutterLocalNotificationsPlugin();
-  
+
   static init() {
     _notification.initialize(const InitializationSettings(
       android: AndroidInitializationSettings("@mipmap/ic_launcher"),
@@ -14,7 +14,7 @@ class Notifications {
     tz.initializeTimeZones();
   }
 
-  static scheduledNotification(String title, String body, int hours, int minutes) async {
+  static scheduledNotification(String title, String body, int hours, int minuts) async {
     var androidDetails = AndroidNotificationDetails(
         "Риза",
         "Я риза",
@@ -29,22 +29,30 @@ class Notifications {
         0,
         title,
         body,
-        tz.TZDateTime.now(tz.local).add(Duration(hours: hours, minutes: minutes)),
+        _scheduleDaily(DateTime(hours, minuts)),
         notificationDetails,
         uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      matchDateTimeComponents: DateTimeComponents.time
         );
+    }
   }
+tz.TZDateTime _scheduleDaily(DateTime time) {
+  final now = tz.TZDateTime.now(tz.local);
+  final schedul = tz.TZDateTime(tz.local, now.year, now.month, now.day,
+      time.hour, time.minute, time.second);
+
+  return schedul.isBefore(now)
+      ? schedul.add(Duration(days: 1)) : schedul;
 }
 
 /*class NotificationsPage extends StatefulWidget {
-  const IIII({super.key});
 
   @override
-  State<IIII> createState() => _IIIIState();
+  State<NotificationsPage> createState() => _IIIIState();
 }
 
-class _IIIIState extends State<IIII> {
+class _IIIIState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,7 +61,7 @@ class _IIIIState extends State<IIII> {
           padding: const EdgeInsets.all(30.0),
           child: ElevatedButton(
             onPressed: (){
-              Notifications.scheduledNotification("Риза", "все работает", 0, 2);
+              Notifications.scheduledNotification("Риза", "все работает",);
             },
             child: Text("jjjdjjd"),
           ),

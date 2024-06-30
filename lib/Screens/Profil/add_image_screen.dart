@@ -12,10 +12,10 @@ class AddImage extends StatefulWidget {
 }
 
 class _AddImageState extends State<AddImage> {
-  File? image;
-
-  bool isImageSelected = false;
+  /*bool isImageSelected = false;
   File? imageFile;
+  Image? image;
+
   _pickImagefromGallery() async {
     try {
       final pickedImage =
@@ -25,6 +25,7 @@ class _AddImageState extends State<AddImage> {
           imageFile = File(pickedImage.path);
           isImageSelected = true;
         });
+        Uniti.saveImageToPreferences(Uniti.base64String(imageFile!.readAsBytesSync()));
       } else {
         print('User didnt pick any image.');
       }
@@ -33,10 +34,20 @@ class _AddImageState extends State<AddImage> {
     }
   }
 
+  loadImageFromPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final imageKeyValue = prefs.getString("IMAGE_KEY");
+    if (imageKeyValue != null) {
+      final imageString = await Uniti.getImageFromPreferences();
+      setState(() {
+        image = Uniti.imageFromBase64String(imageString!);
+      });
+    }
+  }
+
   _pickImagefromCamera() async {
     try {
-      final pickedImage =
-          await ImagePicker().pickImage(source: ImageSource.camera);
+      final pickedImage = await ImagePicker().pickImage(source: ImageSource.camera);
       if (pickedImage != null) {
         setState(() {
           imageFile = File(pickedImage.path);
@@ -48,11 +59,13 @@ class _AddImageState extends State<AddImage> {
     } catch (e) {
       print(e.toString());
     }
-  }
+  }*/
 
-  Future pickImage() async {
+  File? image;
+
+  Future pickImage(ImageSource source) async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final image = await ImagePicker().pickImage(source: source);
       if (image == null) return;
 
       final imageTemporary = File(image.path);
@@ -61,6 +74,33 @@ class _AddImageState extends State<AddImage> {
       print("Ошибка: $e");
     }
   }
+
+  /*Image? image;
+
+  pickImage(ImageSource source) async {
+    final _image = await ImagePicker().pickImage(source: source);
+
+    if (_image != null) {
+      setState(() {
+        image = Image.file(_image as File);
+      });
+      Uniti.saveImageToPreferences(
+          Uniti.base64String(_image.readAsBytes()));
+    } else {
+      print('Error picking image!');
+    }
+  }
+
+  loadImageFromPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final imageKeyValue = prefs.getString("IMAGE_KEY");
+    if (imageKeyValue != null) {
+      final imageString = await Uniti.getImageFromPreferences();
+      setState(() {
+        image = Uniti.imageFromBase64String(imageString!);
+      });
+    }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +130,8 @@ class _AddImageState extends State<AddImage> {
                         child: ElevatedButton(
                             child: const Text("Открыть галерею", textAlign: TextAlign.center),
                             onPressed: () async {
-                              await _pickImagefromGallery();
+                              //await _pickImagefromGallery();
+                              pickImage(ImageSource.gallery);
                             }),
                       ),
                       SizedBox(
@@ -98,26 +139,27 @@ class _AddImageState extends State<AddImage> {
                         child: ElevatedButton(
                             child: const Text("Открыть камеру", textAlign: TextAlign.center),
                             onPressed: () async {
-                              await _pickImagefromCamera();
+                              //await _pickImagefromCamera();
+                              pickImage(ImageSource.camera);
                             }),
                       ),
                     ],
-                  ),
-                  isImageSelected
-                      ? Expanded(
+                  ), image == null ? Text("пусто") : Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Image(image: FileImage(imageFile!)),
-                                  ElevatedButton(onPressed: (){}, child: Text("Опубликовать"))
+                                  Image(image: FileImage(image!)),
+                                  ElevatedButton(onPressed: (){
+                                  },
+                                    child: Text("Опубликовать"))
                                 ],
                               ),
                             ),
                           ),
-                        ) : Container()
+                        )
                 ],
               ),
             ),

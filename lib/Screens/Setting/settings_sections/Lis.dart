@@ -1,0 +1,92 @@
+import 'package:body_strong/Screens/Setting/settings_sections/user_account.dart';
+import 'package:body_strong/themeColorAndfont.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class TextFontPage extends StatefulWidget {
+  TextFontPage(this.text, this.num);
+  List text;
+  int num;
+
+  @override
+  State<TextFontPage> createState() => _TextFontPageState();
+}
+
+class _TextFontPageState extends State<TextFontPage> {
+  final name = TextEditingController();
+  List names = [
+  "name",
+  "age",
+  "height",
+  "width",
+  "desiredWeight",
+  "gender",
+  "activity",
+  "purpose",
+  "login",
+  "password",
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeColorAndfont().themeColorAndfont(context),
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: ThemeColorAndfont().backScreen(context),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
+              fit: BoxFit.cover
+            )
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 120),
+            child: Column(
+              children: [
+                Container(
+                      margin: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.white.withOpacity(0.2)
+                      ),
+                      child: TextFormField(
+                        controller: name,
+                        style: const TextStyle(color: Colors.black),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Неверное имя";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                            icon: const Icon(
+                                Icons.person,
+                                color: Color(0xFFFAFF00)
+                            ),
+                            border: InputBorder.none,
+                            hintText: widget.text.elementAt(widget.num),
+                            hintStyle: const TextStyle(color: Colors.black, fontSize: 18)
+                        ),
+                      ),
+                    ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final prefs = await SharedPreferences.getInstance();
+                    await prefs.setString(widget.text.elementAt(widget.num), name.text);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => UserAccount()));
+                  },
+                  child: const Text("Сохранить")
+                )
+              ],
+            ),
+          ),
+        )
+      ),
+    );
+  }
+}

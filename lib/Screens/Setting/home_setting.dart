@@ -1,10 +1,11 @@
+import 'package:body_strong/Screens/Setting/settings_sections/Lis.dart';
+import 'package:body_strong/Screens/Setting/settings_sections/user_account.dart';
 import 'package:body_strong/Screens/Setting/notifications.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/features_of_the_diet.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/invite_a_friend.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/notification_of_reminders.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/subscription.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/support.dart';
-import 'package:body_strong/Screens/Setting/settings_sections/user_account.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 
@@ -32,12 +33,12 @@ class HomeSetting extends StatelessWidget {
   ];
 
   List<Widget> wid = [
-    User_account(),
+    UserAccount(),
     FeaturesOfTheDiet(),
     Subscription(),
     NotificationOfReminders(),
     InviteAFriend(),
-    Support()
+    Support(),
   ];
 
   @override

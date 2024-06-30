@@ -1,22 +1,45 @@
+import 'package:body_strong/Screens/Setting/home_setting.dart';
+import 'package:body_strong/Screens/Setting/settings_sections/Lis.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/setting_sections_template.dart';
+import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class User_account extends StatelessWidget {
+class UserAccount extends StatefulWidget {
+  const UserAccount({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return SettingSectionTemplate(_U(), "Личные данные");
-  }
+  State<UserAccount> createState() => UserAccountState();
 }
 
-class _U extends StatefulWidget {
-  @override
-  State<_U> createState() => _UState();
-}
+class UserAccountState extends State<UserAccount> {
+  List names = [
+    "Имя",
+    "Возраст",
+    "Рост",
+    "Вес",
+    "Желаемый вес",
+    "Пол",
+    "Активность",
+    "Цель",
+    "Логин",
+    "Пароль",
+  ];
 
-class _UState extends State<_U> {
-  final nameControlle = TextEditingController();
+  List num = [
+    0,1,2,3,4,5,6,7
+  ];
+
   var name = "";
+  var age = "";
+  var height = "";
+  var width = "";
+  var desiredWeight = "";
+  var gender = "";
+  var activity = "";
+  var purpose = "";
+  var login = "";
+  var password = "";
 
   @override
   void initState() {
@@ -26,122 +49,58 @@ class _UState extends State<_U> {
 
   getSaveData() async {
     final prefs = await SharedPreferences.getInstance();
-    name = prefs.getString("username")!;
+    name = prefs.getString("name")!;
+    age = prefs.getString("age")!;
+    height = prefs.getString("height")!;
+    width = prefs.getString("width")!;
+    desiredWeight = prefs.getString("desiredWeight")!;
+    gender = prefs.getString("gender")!;
+    activity = prefs.getString("activity")!;
+    purpose = prefs.getString("purpose")!;
+    login = prefs.getString("login")!;
+    password = prefs.getString("password")!;
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    List _name_field = [
-      "Имя",
-      "Возраст",
-      "Рост",
-      "Вес",
-      "Желаемый вес",
-      "Пол",
-      "Активность",
-      "Цель",
-      "Логин",
-      "Пароль",
-      "Банковская картка",
-    ];
-
-    return ListView(
-      children: [
-        form(_name_field[0]),
-        /*form(_name_field[1]),
-        form(_name_field[2]),
-        form(_name_field[3]),
-        checkBox(_name_field[4]),
-        checkBox(_name_field[5]),
-        checkBox(_name_field[6]),
-        form(_name_field[7]),
-        form(_name_field[8]),
-        form(_name_field[9]),
-        form(_name_field[10]),*/
-        ElevatedButton(
-        onPressed: () async {
-        final pref = await SharedPreferences.getInstance();
-        await pref.setString("username", nameControlle.text);
-        setState(() {
-          getSaveData();
-        });
-        },
-        child: Text("Добавить")),
-        Text(name, style: TextStyle(
-          color: Colors.white,
-          fontSize: 40
-        ))
-      ],
-    );
-  }
-
-  Widget form(String a) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 40),
-      child: Form(
-        child: TextFormField(
-            controller: nameControlle,
-            style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
-            validator: (value) {
-              if (value == null || value.isNotEmpty) {
-                return null;
-              }
-              return "euiieie";
-            },
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.grey.shade200,
-              //prefixIcon: Icon(Icons.add),
-              labelText: a,
-              labelStyle: const TextStyle(fontSize: 26, color: Colors.black),
-              border: const OutlineInputBorder(),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            )),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(leading: IconButton(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => HomeSetting()));
+          },
+          icon: Icon(Icons.add),
+        )),
+        body: ListView.builder(
+          itemCount: names.length,
+          itemBuilder: (context, index) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => TextFontPage(names, num[index])));
+                        },
+                        child: Text(names[index], style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        )
+                      )
+                    ), name.isNotEmpty ?
+                    Text(name, style: TextStyle(color: Colors.black)) : Text("ksksks")
+                  ],
+                ),
+                Divider()
+              ],
+            );
+          }
+        ),
       ),
     );
   }
-
-  Widget checkBox(String checkBox) {
-    int _selectedValue = 0;
-    List<String> text = <String>[
-      "Муж",
-      "Жен",
-    ];
-    return Column(
-      children: [
-        CheckboxListTile(
-          controlAffinity: ListTileControlAffinity.leading,
-          title: Text(text[0],
-              style: const TextStyle(fontSize: 26, color: Color(0xFFFAFF00))),
-          value: _selectedValue == 1,
-          checkColor: Colors.black,
-          activeColor: const Color(0xFFFAFF00),
-          onChanged: (value) {
-            setState(() {
-              if (value!) {
-                _selectedValue = 1;
-              }
-            });
-          },
-        ),
-        CheckboxListTile(
-          controlAffinity: ListTileControlAffinity.leading,
-          title: Text(text[1],
-              style: const TextStyle(fontSize: 26, color: Color(0xFFFAFF00))),
-          value: _selectedValue == 2,
-          checkColor: Colors.black,
-          activeColor: const Color(0xFFFAFF00),
-          onChanged: (value) {
-            setState(() {
-              if (value!) {
-                _selectedValue = 2;
-              }
-            });
-          },
-        )
-      ],
-    );
-  }
 }
+

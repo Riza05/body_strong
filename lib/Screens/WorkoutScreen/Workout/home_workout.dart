@@ -10,7 +10,9 @@ import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 
 //Лист групп мышц в разделе тренировки в зале
-class HomeWorkout extends StatelessWidget {
+class Workout extends StatelessWidget {
+  Workout({super.key});
+
   List name = [
     "Трицепс",
     "Грудь",
@@ -24,14 +26,27 @@ class HomeWorkout extends StatelessWidget {
   ];
 
   List widget = [
-    Triceps(),
-    Chest(),
-    Back(),
-    Legs(),
-    Shoulders(),
-    Buttocks(),
-    Forearms(),
-    Abs(),
+    const Triceps(),
+    const Chest(),
+    const Back(),
+    const Legs(),
+    const Shoulders(),
+    const Buttocks(),
+    const Forearms(),
+    const Abs(),
+  ];
+
+  List img = [
+    "assets/image/Exercises/musclegroups/muscles.png",
+    "assets/image/Exercises/musclegroups/gym.png",
+    "assets/image/Exercises/musclegroups/back.png",
+    "assets/image/Exercises/musclegroups/muscles (1).png",
+    "assets/image/Exercises/musclegroups/back (1).png",
+    "assets/image/Exercises/musclegroups/muscles (1).png",
+    "assets/image/Exercises/musclegroups/human.png",
+    "assets/image/Exercises/musclegroups/exercise.png",
+    "assets/image/Exercises/musclegroups/biceps.png",
+    "assets/image/Exercises/musclegroups/back (2).png",
   ];
 
   @override
@@ -42,7 +57,7 @@ class HomeWorkout extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: ThemeColorAndfont().backScreen(context),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
               fit: BoxFit.cover
@@ -50,8 +65,8 @@ class HomeWorkout extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 80),
+              const Padding(
+                padding: EdgeInsets.only(top: 80),
                 child: Text(
                   "Группы мышц",
                   style: TextStyle(
@@ -62,7 +77,7 @@ class HomeWorkout extends StatelessWidget {
               ),
               Expanded(
                   child: ListView.builder(
-                    padding: EdgeInsets.only(bottom: 5),
+                    padding: const EdgeInsets.only(bottom: 5),
                     itemCount: name.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
@@ -74,7 +89,7 @@ class HomeWorkout extends StatelessWidget {
                               height: 70,
                               width: 70,
                               child: CircleAvatar(
-                                backgroundImage: AssetImage("assets/na-avy-parni-44.jpg"),
+                                backgroundImage: AssetImage(img[index]),
                               )
                             ),
                             SizedBox(
@@ -91,18 +106,18 @@ class HomeWorkout extends StatelessWidget {
                                 },
                                 child: Text(
                                   name[index],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 26
-                                  )
                                 )
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    }
-                  ),
-                )
+                              )
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }
+                ),
+              )
             ]
           ),
         )

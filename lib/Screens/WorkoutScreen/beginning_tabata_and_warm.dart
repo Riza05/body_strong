@@ -33,21 +33,25 @@ class _BeginningTabataAndWarmState extends State<BeginningTabataAndWarm> {
             children: [
               Expanded(
                 child: ListView.builder(
-                        itemCount: widget.a.length,
+                        itemCount: widget.c.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
                                   height: 120,
                                   width: 120,
                                   child: CircleAvatar(backgroundImage: AssetImage(widget.a[index]))),
-                                Padding(padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20)),
-                                Text(widget.c[index], style: TextStyle(
-                                  fontSize: 18
-                                ))
+                                ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxWidth: MediaQuery.of(context).size.width - 200
+                                  ),
+                                  child: Text(widget.c[index], style: TextStyle(
+                                    fontSize: 18
+                                  )),
+                                )
                               ],
                             ),
                           );

@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:body_strong/Screens/WorkoutScreen/MyExercises/%D1%81reating_an_exercise_screen.dart';
+import 'package:body_strong/Screens/WorkoutScreen/MyExercises/exercisesList.dart';
+import 'package:body_strong/Screens/WorkoutScreen/MyExercises/pageWithSpecificExercise.dart';
 import 'package:body_strong/Screens/WorkoutScreen/home_workout.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
@@ -12,25 +15,23 @@ class MyExercises extends StatefulWidget {
 }
 
 class _MyExercisesState extends State<MyExercises> {
-  Key key = GlobalKey();
-  var title = "";
-  var description = "";
-  var warning = "";
+  List<Exerciseslist> list = [];
+  late SharedPreferences sharedPreferences;
 
-  @override
-  void initState() {
-    getSaveData();
-    super.initState();
-  }
-
-  getSaveData() async {
-    final prefs = await SharedPreferences.getInstance();
-    title = prefs.getString("title")!;
-    description = prefs.getString("description")!;
-    warning = prefs.getString("warning")!;
+  getData() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    List<String>? strList = sharedPreferences.getStringList("exercisesList");
+    if(strList != null) {
+      list = strList.map((item) => Exerciseslist.fromJson(json.decode(item))).toList();
+    }
     setState(() {});
   }
 
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,34 +55,56 @@ class _MyExercisesState extends State<MyExercises> {
           ),
           child: Padding(
             padding: const EdgeInsets.only(top: 100),
-            child: title.isNotEmpty && description.isNotEmpty && warning.isNotEmpty ? Column(
-              children: [
-                Text(title),
-                Text(description),
-                Text(warning),
-                ElevatedButton(onPressed: () {
-                  setState(() async {
-                    const MyExercises();
-                    final prefs = await SharedPreferences.getInstance();
-                    prefs.remove("title");
-                    prefs.remove("description");
-                    prefs.remove("warning");
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyExercises()));
-                  });
-                }, child: const Text("удалить")),
-                ElevatedButton(
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CreatingAnExercise()
-                      )
-                    );
-                  },
-                  child: Text("Добавить упражнение")
-                )
-              ]
-            ) : Column(
+            child: list.isNotEmpty ?
+               Column(
+                 children: [
+                   Expanded(
+                     child: ListView.builder(
+                       itemCount: list.length,
+                       itemBuilder: (context, index) {
+                         return Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                           children: [
+                             SizedBox(
+                               height: 100,
+                               width: 100,
+                               child: CircleAvatar(
+                                 backgroundImage: AssetImage("assets/na-avy-parni-44.jpg")
+                               ),
+                             ),
+                             ElevatedButton(
+                               onPressed: (){
+                                 Navigator.push(
+                                   context,
+                                   MaterialPageRoute(
+                                     builder: (context) =>
+                                       PageWithSpecificExercise(
+                                         list[index].title,
+                                         list[index].description,
+                                         list[index].warning
+                                     )
+                                   )
+                                 );
+                               },
+                               child: Text(list[index].title)
+                             ),
+                             IconButton(
+                               onPressed: (){
+                                 setState(() {
+                                   list.remove(list[index]);
+                                   List<String> strList = list.map((item) => json.encode(item.toJson())).toList();
+                                   sharedPreferences.setStringList("exercisesList", strList);
+                                 });
+                               },
+                               icon: Icon(Icons.delete, size: 30, color: Colors.red,)
+                             )
+                           ],
+                         );
+                       }
+                                 ),
+                   ),
+                 ],
+               ) : Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const Text("Ваши упражнения", style: TextStyle(
@@ -95,23 +118,30 @@ class _MyExercisesState extends State<MyExercises> {
                     color: Colors.white,
                   ),textAlign: TextAlign.center,),
                 ),
-                const SizedBox(height: 40),
-                ElevatedButton(
-                    onPressed: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CreatingAnExercise()));
-                    },
-                    child: const Text("Создать", style: TextStyle(
-                        fontSize: 20
-                    )
-                  )
-                ),
               ],
             )
           )
-        )
+        ),
+        floatingActionButton:SizedBox(
+        height: 60,
+        width: 60,
+        child: FittedBox(
+          child: FloatingActionButton(
+            onPressed: () async {
+              String refresh = await Navigator.push(context, MaterialPageRoute(builder: (context) => CreatingAnExercise()));
+              if(refresh == "Data") {
+                setState(() {
+                  getData();
+                });
+              }
+            },
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white,
+            child: Icon(Icons.add),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          ),
+        ),
+      ),
       )
     );
   }

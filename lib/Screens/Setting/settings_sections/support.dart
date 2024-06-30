@@ -1,5 +1,6 @@
 import 'package:body_strong/Screens/Setting/settings_sections/setting_sections_template.dart';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 
 class Support extends StatelessWidget {
 
@@ -22,13 +23,14 @@ class Support extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 150,
-            width: 150,
+            height: 60,
+            width: 60,
             child: IconButton(
               onPressed: (){},
               icon: const Image(image: AssetImage("assets/Icon/icon_telegram.png"))
             ),
           ),
+          FloatingActionButton(onPressed: (){}, child: Icon(Icons.send),)
         ],
       ),
     );

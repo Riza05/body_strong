@@ -5,9 +5,16 @@ import 'package:google_fonts/google_fonts.dart';
 //Шрифт,цвет для theme
 class ThemeColorAndfont {
   ThemeData themeColorAndfont(BuildContext context) => ThemeData(
-    textTheme: Theme.of(context).textTheme.apply(
+    /*textTheme: Theme.of(context).textTheme.apply(
       bodyColor: Color(0xFFFAFF00),
-      fontFamily: GoogleFonts.kronaOne().fontFamily
+      fontFamily: GoogleFonts.kronaOne().fontFamily,
+    ),*/
+    textTheme: TextTheme(
+      titleMedium: TextStyle(
+        fontSize: 36,
+        color: const Color(0xFFFAFF00),
+        fontFamily: GoogleFonts.kronaOne().fontFamily
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
