@@ -1,6 +1,4 @@
-import 'package:body_strong/Screens/Setting/settings_sections/Lis.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/user_account.dart';
-import 'package:body_strong/Screens/Setting/notifications.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/features_of_the_diet.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/invite_a_friend.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/notification_of_reminders.dart';
