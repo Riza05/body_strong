@@ -6,9 +6,9 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 
 class StartTabata extends StatefulWidget {
   StartTabata(this.gif, this.name);
-  List gif;
-  List name;
-  Color backgroundColor = Color(0xFFFAFF00);
+  final List gif;
+  final List name;
+  final Color backgroundColor = Color(0xFFFAFF00);
 
   @override
   State<StartTabata> createState() => _StartTabataState();

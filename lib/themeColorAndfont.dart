@@ -20,9 +20,9 @@ class ThemeColorAndfont {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFAFF00)),
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        backgroundColor: WidgetStateProperty.all<Color>(Color(0xFFFAFF00)),
+        foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0))
         ),
         textStyle: WidgetStateProperty.all<TextStyle>(

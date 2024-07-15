@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Measurements extends StatefulWidget {
   Measurements(this.text);
-  String text;
+  final String text;
 
   @override
   State<Measurements> createState() => _MeasurementsState();

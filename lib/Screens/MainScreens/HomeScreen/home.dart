@@ -3,7 +3,6 @@ import 'package:body_strong/Screens/Chat/Homescreen.dart';
 import 'package:body_strong/Screens/FootScreens/homeFood.dart';
 import 'package:body_strong/Screens/Map/mapScreen.dart';
 import 'package:body_strong/Screens/Pedometer/home_pedometer.dart';
-import 'package:body_strong/Screens/Profil/profil_sreens.dart';
 import 'package:body_strong/Screens/Setting/home_setting.dart';
 import 'package:body_strong/Screens/Tape/HomeTape.dart';
 import 'package:body_strong/Screens/Widgets/Generate_a_image.dart';

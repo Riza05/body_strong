@@ -7,8 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class HomeMyTraning extends StatefulWidget {
-  String? a;
-  String? b;
+  final String? a;
+  final String? b;
   HomeMyTraning({this.a, this.b});
 
   @override
@@ -17,7 +17,6 @@ class HomeMyTraning extends StatefulWidget {
 
 class _HomeMyTraningState extends State<HomeMyTraning> {
   DateTime dateTime = DateTime.now();
-  DateTime? _time;
 
   void _onDaySelected(DateTime day, DateTime focuseDay) {
     setState(() {

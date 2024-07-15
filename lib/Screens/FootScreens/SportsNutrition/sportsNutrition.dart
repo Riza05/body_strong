@@ -3,7 +3,7 @@ import 'package:body_strong/Screens/FootScreens/SportsNutrition/sportsNutritionI
 import 'package:flutter/material.dart';
 
 class SportsNutrition extends StatelessWidget {
-  List titles= [
+  final List titles= [
     "ПРОТЕИН",
     "ГЕЙНЕР",
     "КРЕАТИН",

@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:body_strong/Screens/MainScreens/HomeScreen/home.dart';
 import 'package:body_strong/Screens/Map/clusterizedIconPainter.dart';
 import 'package:body_strong/Screens/Map/mapPoint.dart';
-import 'package:body_strong/themeColorAndfont.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +118,6 @@ class _MapScreenState extends State<MapScreen> {
   }
 
 
-  @override
   Future<bool> requestPermission() {
     return Geolocator.requestPermission()
         .then((value) =>

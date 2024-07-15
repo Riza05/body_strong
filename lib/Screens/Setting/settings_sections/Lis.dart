@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class TextFontPage extends StatefulWidget {
   TextFontPage(this.text);
-  String text;
+  final String text;
 
   @override
   State<TextFontPage> createState() => _TextFontPageState();

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class IndividualPageSportNutrition extends StatelessWidget {
   IndividualPageSportNutrition(this.title, this.subtitle);
 
-  late String title;
-  late String subtitle;
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {

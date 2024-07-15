@@ -5,8 +5,8 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class IndividualPagemyRecept extends StatefulWidget {
   IndividualPagemyRecept({required this.a, required this.data});
-  String a;
-  List data;
+  final String a;
+  final List data;
 
   @override
   State<IndividualPagemyRecept> createState() => _IndividualPagemyReceptState();

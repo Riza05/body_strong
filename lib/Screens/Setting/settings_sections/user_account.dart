@@ -1,7 +1,5 @@
 import 'package:body_strong/Screens/Setting/home_setting.dart';
 import 'package:body_strong/Screens/Setting/settings_sections/Lis.dart';
-import 'package:body_strong/Screens/Setting/settings_sections/setting_sections_template.dart';
-import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
