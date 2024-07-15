@@ -69,7 +69,7 @@ class _RecipesState extends State<Recipes> {
     );
   }*/
 
-  Widget _inkWell() {
+  Widget inkWell() {
     return Material(
       child: InkWell(
         onTap: (){},

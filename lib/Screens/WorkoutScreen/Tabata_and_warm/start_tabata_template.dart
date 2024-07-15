@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:body_strong/Screens/endWarmUpAndTabata.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
-import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 
 class StartTabata extends StatefulWidget {
   StartTabata(this.gif, this.name);
@@ -16,7 +15,6 @@ class StartTabata extends StatefulWidget {
 
 class _StartTabataState extends State<StartTabata> {
   //final int _endDuration = 20;
-  final CountDownController _controller = CountDownController();
   int num = 0;
   static const maxSeconds = 60;
   int seconds = maxSeconds;

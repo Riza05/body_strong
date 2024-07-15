@@ -22,7 +22,7 @@ class _HomePedometerState extends State<HomePedometer> {
   bool isSection = true;
   bool isStartAndStop = true;
   var geo = Geolocator.getPositionStream();
-  double _speed = 0;
+  double speed = 0;
   bool isBtns = true;
   List titlePages = [
     "Упражнения для бега",
@@ -32,7 +32,7 @@ class _HomePedometerState extends State<HomePedometer> {
   void _getCurrentSpeed() async {
     Position position = await Geolocator.getCurrentPosition();
     setState(() {
-      _speed = (3600 * position.speed) / 1000;
+      speed = (3600 * position.speed) / 1000;
     });
   }
 

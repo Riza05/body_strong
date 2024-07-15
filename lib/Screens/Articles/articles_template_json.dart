@@ -13,7 +13,6 @@ class ArticlesTemplateJson extends StatefulWidget {
 
 class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
   List<dynamic> _articles = [];
-  List<dynamic> _notesForDisplay = [];
 
   Future<void> readJsonFile() async {
     final String response = await rootBundle.loadString("assets/Json_fiels/Articles.json");
