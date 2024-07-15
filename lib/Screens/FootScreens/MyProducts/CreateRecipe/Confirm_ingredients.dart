@@ -44,7 +44,8 @@ class _ConfirmIngredientsState extends State<ConfirmIngredients> {
               icon: Icon(Icons.backspace), onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => HomeFoot()));
               }
-            )
+            ),
+            backgroundColor: Colors.transparent,
           ),
           body: Container(
             width: double.infinity,
@@ -54,9 +55,7 @@ class _ConfirmIngredientsState extends State<ConfirmIngredients> {
                     fit: BoxFit.cover
                   )
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 100),
-                  child: list.isNotEmpty ? Column(
+              child: list.isNotEmpty ? Column(
                     children: [
                       Expanded(
                         child: ListView.builder(
@@ -68,7 +67,7 @@ class _ConfirmIngredientsState extends State<ConfirmIngredients> {
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width - 30,
+                                    .width - 40,
                                 height: 350,
                                 child: Card(
                                   semanticContainer: true,
@@ -77,11 +76,17 @@ class _ConfirmIngredientsState extends State<ConfirmIngredients> {
                                     containedInkWell: true,
                                     highlightShape: BoxShape.rectangle,
                                     onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => IndividualPagemyRecept(data: [
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => IndividualPagemyRecept(a: list[index].calories,data: [
+                                        list[index].name,
+                                        list[index].squirrels,
+                                        list[index].fats,
+                                        list[index].carbohydrates,
                                         list[index].ingredients,
                                         list[index].cookingMethod,
                                         list[index].cookingTime,
-                                      ])));
+                                        list[index].typeOfDish
+                                      ]))
+                                      );
                                     },
                                     // Add image & text
                                     child: Column(
@@ -90,8 +95,7 @@ class _ConfirmIngredientsState extends State<ConfirmIngredients> {
                                             width: double.infinity,
                                             height: 175,
                                             fit: BoxFit.cover,
-                                            image: AssetImage(
-                                                "assets/na-avy-parni-44.jpg")),
+                                            image: AssetImage("assets/na-avy-parni-44.jpg")),
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 10),
@@ -102,26 +106,32 @@ class _ConfirmIngredientsState extends State<ConfirmIngredients> {
                                               child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Column(
-                                                    crossAxisAlignment: CrossAxisAlignment
-                                                        .start,
-                                                    mainAxisAlignment: MainAxisAlignment
-                                                        .spaceEvenly,
-                                                    children: [
-                                                      Text(list[index].ingredients,
-                                                          style: TextStyle(
-                                                              fontSize: 26,
-                                                              color: Colors.black,
-                                                              fontWeight: FontWeight.bold
-                                                          )),
-                                                      Text(list[index].cookingMethod, style: TextStyle(
-                                                        fontSize: 16,
-                                                        color: Colors.black,
-                                                      )),
-                                                      Text(list[index].cookingTime),
-                                                      Text(list[index].typeOfDish),
-                                                      Text(list[index].cookingTechnology),
-                                                    ],
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment
+                                                          .start,
+                                                      mainAxisAlignment: MainAxisAlignment
+                                                          .spaceEvenly,
+                                                      children: [
+                                                        Text(list[index].name,
+                                                          softWrap: false,
+                                                          maxLines: 1,
+                                                          overflow: TextOverflow.ellipsis,
+                                                            style: TextStyle(
+                                                                fontSize: 26,
+                                                                color: Colors.black,
+                                                                fontWeight: FontWeight.bold,
+                                                            ),
+                                                        ),
+                                                        Text("калл: ${list[index].calories}", style: TextStyle(
+                                                          fontSize: 16,
+                                                          color: Colors.black,
+                                                        )),
+                                                        Text("Белки: ${list[index].squirrels}"),
+                                                        Text("Жиры: ${list[index].fats}"),
+                                                        Text("Углеводы: ${list[index].carbohydrates}"),
+                                                      ],
+                                                    ),
                                                   ),
                                                   Align(
                                                     alignment: Alignment.bottomRight,
@@ -178,7 +188,6 @@ class _ConfirmIngredientsState extends State<ConfirmIngredients> {
                       const SizedBox(height: 40),
                     ],
                   )
-              )
           ),
         floatingActionButton:
             SizedBox(

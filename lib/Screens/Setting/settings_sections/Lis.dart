@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TextFontPage extends StatefulWidget {
-  TextFontPage(this.text, this.num);
-  List text;
-  int num;
+  TextFontPage(this.text);
+  String text;
 
   @override
   State<TextFontPage> createState() => _TextFontPageState();
@@ -69,7 +68,8 @@ class _TextFontPageState extends State<TextFontPage> {
                                 color: Color(0xFFFAFF00)
                             ),
                             border: InputBorder.none,
-                            hintText: widget.text.elementAt(widget.num),
+                            hintText: widget.text,
+                            prefixText: "kksksk",
                             hintStyle: const TextStyle(color: Colors.black, fontSize: 18)
                         ),
                       ),
@@ -77,7 +77,8 @@ class _TextFontPageState extends State<TextFontPage> {
                 ElevatedButton(
                   onPressed: () async {
                     final prefs = await SharedPreferences.getInstance();
-                    await prefs.setString(widget.text.elementAt(widget.num), name.text);
+                    print("${widget.text}");
+                    await prefs.setString("${widget.text}", name.text);
                     Navigator.push(context, MaterialPageRoute(builder: (context) => UserAccount()));
                   },
                   child: const Text("Сохранить")

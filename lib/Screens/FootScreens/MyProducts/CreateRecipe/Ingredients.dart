@@ -21,11 +21,15 @@ class _IngredientsState extends State<Ingredients> {
   File? imageFile;
 
   final formKey = GlobalKey<FormState>();
+  final name = TextEditingController();
+  final calories = TextEditingController();
+  final squirrels = TextEditingController();
+  final fats = TextEditingController();
+  final carbohydrates = TextEditingController();
   final ingredients = TextEditingController();
   final cookingMethod = TextEditingController();
   final cookingTime = TextEditingController();
   final typeOfDish = TextEditingController();
-  final cookingTechnology = TextEditingController();
 
   List<Ingredientslist> list = [];
   late SharedPreferences sharedPreferences;
@@ -106,164 +110,261 @@ class _IngredientsState extends State<Ingredients> {
                     fit: BoxFit.cover
                 )
             ),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                    height: 150,
-                    width: 150,
-                    child: InkWell(
-                      onTap: (){
-                        _showSimpleDialog();
-                      },
-                      child: isImageSelected
-                          ? CircleAvatar(
-                        backgroundImage: FileImage(imageFile!),
-                      ) : CircleAvatar(
-                          child: Text("Загрузите фото")
+            child: Padding(
+              padding: const EdgeInsets.only(top: 120),
+              child: SingleChildScrollView(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        height: 150,
+                        width: 150,
+                        child: InkWell(
+                          onTap: (){
+                            _showSimpleDialog();
+                          },
+                          child: isImageSelected
+                              ? CircleAvatar(
+                            backgroundImage: FileImage(imageFile!),
+                          ) : CircleAvatar(
+                              child: Text("Загрузите фото")
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Form(
-                      key: formKey,
-                      child: Column(
-                          children: [
-                            const SizedBox(height: 15),
-                            Container(
-                              margin: const EdgeInsets.all(8),
-                              padding:
-                              const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey.withOpacity(.2)),
-                              child: TextFormField(
-                                controller: ingredients,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Поле не должно быть пустым";
-                                  }
-                                  return null;
-                                },
-                                decoration: const InputDecoration(
-                                    hintText: "Название",
-                                    hintStyle: TextStyle(color: Colors.white)
-                                ),
-                              ),
-                            ),
-
-                            Container(
-                              margin: const EdgeInsets.all(8),
-                              padding:
-                              const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey.withOpacity(.2)),
-                              child: TextFormField(
-                                controller: cookingMethod,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Поле не должно быть пустым";
-                                  }
-                                  return null;
-                                },
-                                decoration: const InputDecoration(
-                                    hintText: "Описание",
-                                    hintStyle: TextStyle(color: Colors.white)
-                                ),
-                              ),
-                            ),
-
-                            Container(
-                              margin: const EdgeInsets.all(8),
-                              padding:
-                              const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey.withOpacity(.2)),
-                              child: TextFormField(
-                                controller: cookingTime,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Поле не должно быть пустым";
-                                  }
-                                  return null;
-                                },
-                                decoration: const InputDecoration(
-                                    hintText: "Предупреждени",
-                                    hintStyle: TextStyle(color: Colors.white)
-                                ),
-                              ),
-                            ),
-
-                            Container(
-                              margin: const EdgeInsets.all(8),
-                              padding:
-                              const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey.withOpacity(.2)),
-                              child: TextFormField(
-                                controller: typeOfDish,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Поле не должно быть пустым";
-                                  }
-                                  return null;
-                                },
-                                decoration: const InputDecoration(
-                                    hintText: "Предупреждени",
-                                    hintStyle: TextStyle(color: Colors.white)
-                                ),
-                              ),
-                            ),
-
-                            Container(
-                              margin: const EdgeInsets.all(8),
-                              padding:
-                              const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey.withOpacity(.2)),
-                              child: TextFormField(
-                                controller: cookingTechnology,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Поле не должно быть пустым";
-                                  }
-                                  return null;
-                                },
-                                decoration: const InputDecoration(
-                                    hintText: "Предупреждени",
-                                    hintStyle: TextStyle(color: Colors.white)
-                                ),
-                              ),
-                            ),
-
-                            Container(
-                                height: 55,
-                                width: MediaQuery.of(context).size.width * .9,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      list.insert(0, Ingredientslist(
-                                        ingredients: ingredients.text,
-                                        cookingMethod: cookingMethod.text,
-                                        cookingTime: cookingTime.text,
-                                        typeOfDish: typeOfDish.text,
-                                        cookingTechnology: cookingTechnology.text
-                                      ));
-                                      List<String> strList = list.map((item) => json.encode(item.toJson())).toList();
-                                      sharedPreferences.setStringList("ingredientsList", strList);
-                                      Navigator.pop(context,"loadData");
+                      Form(
+                          key: formKey,
+                          child: Column(
+                              children: [
+                                const SizedBox(height: 15),
+                                Container(
+                                  margin: const EdgeInsets.all(8),
+                                  padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withOpacity(.2)),
+                                  child: TextFormField(
+                                    controller: name,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Поле не должно быть пустым";
+                                      }
+                                      return null;
                                     },
-                                    child: const Text("Войти", style: TextStyle(
-                                        fontSize: 20
-                                    )))),
-                          ]
+                                    decoration: const InputDecoration(
+                                        hintText: "Название",
+                                        hintStyle: TextStyle(color: Colors.white)
+                                    ),
+                                  ),
+                                ),
+
+                                Container(
+                                  margin: const EdgeInsets.all(8),
+                                  padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withOpacity(.2)),
+                                  child: TextFormField(
+                                    controller: calories,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Поле не должно быть пустым";
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                        hintText: "Калл",
+                                        hintStyle: TextStyle(color: Colors.white)
+                                    ),
+                                  ),
+                                ),
+
+                                Container(
+                                  margin: const EdgeInsets.all(8),
+                                  padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withOpacity(.2)),
+                                  child: TextFormField(
+                                    controller: squirrels,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Поле не должно быть пустым";
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                        hintText: "белки",
+                                        hintStyle: TextStyle(color: Colors.white)
+                                    ),
+                                  ),
+                                ),
+
+                                Container(
+                                  margin: const EdgeInsets.all(8),
+                                  padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withOpacity(.2)),
+                                  child: TextFormField(
+                                    controller: fats,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Поле не должно быть пустым";
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                        hintText: "Жиры",
+                                        hintStyle: TextStyle(color: Colors.white)
+                                    ),
+                                  ),
+                                ),
+
+                                Container(
+                                  margin: const EdgeInsets.all(8),
+                                  padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withOpacity(.2)),
+                                  child: TextFormField(
+                                    controller: carbohydrates,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Поле не должно быть пустым";
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                        hintText: "Углеводы",
+                                        hintStyle: TextStyle(color: Colors.white)
+                                    ),
+                                  ),
+                                ),
+
+                                Container(
+                                  margin: const EdgeInsets.all(8),
+                                  padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withOpacity(.2)),
+                                  child: TextFormField(
+                                    controller: ingredients,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Поле не должно быть пустым";
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                        hintText: "Ингредиенты",
+                                        hintStyle: TextStyle(color: Colors.white)
+                                    ),
+                                  ),
+                                ),
+
+                                Container(
+                                  margin: const EdgeInsets.all(8),
+                                  padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withOpacity(.2)),
+                                  child: TextFormField(
+                                    controller: cookingMethod,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Поле не должно быть пустым";
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                        hintText: "Способ приготовления",
+                                        hintStyle: TextStyle(color: Colors.white)
+                                    ),
+                                  ),
+                                ),
+
+                                Container(
+                                  margin: const EdgeInsets.all(8),
+                                  padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withOpacity(.2)),
+                                  child: TextFormField(
+                                    controller: cookingTime,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Поле не должно быть пустым";
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                        hintText: "Время приготовления",
+                                        hintStyle: TextStyle(color: Colors.white)
+                                    ),
+                                  ),
+                                ),
+
+                                Container(
+                                  margin: const EdgeInsets.all(8),
+                                  padding:
+                                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withOpacity(.2)),
+                                  child: TextFormField(
+                                    controller: typeOfDish,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Поле не должно быть пустым";
+                                      }
+                                      return null;
+                                    },
+                                    decoration: const InputDecoration(
+                                        hintText: "Тип блюда",
+                                        hintStyle: TextStyle(color: Colors.white)
+                                    ),
+                                  ),
+                                ),
+
+                                Container(
+                                    height: 55,
+                                    width: MediaQuery.of(context).size.width * .9,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: ElevatedButton(
+                                        onPressed: () {
+                                          list.insert(0, Ingredientslist(
+                                            name: name.text,
+                                            calories: calories.text,
+                                            squirrels: squirrels.text,
+                                            fats: fats.text,
+                                            carbohydrates: carbohydrates.text,
+                                            ingredients: ingredients.text,
+                                            cookingMethod: cookingMethod.text,
+                                            cookingTime: cookingTime.text,
+                                            typeOfDish: typeOfDish.text,
+                                          ));
+                                          List<String> strList = list.map((item) => json.encode(item.toJson())).toList();
+                                          sharedPreferences.setStringList("ingredientsList", strList);
+                                          Navigator.pop(context,"loadData");
+                                        },
+                                        child: const Text("Войти", style: TextStyle(
+                                            fontSize: 20
+                                        )))),
+                              ]
+                          )
                       )
-                  )
-                ]
+                    ]
+                ),
+              ),
             ),
           ),
         )

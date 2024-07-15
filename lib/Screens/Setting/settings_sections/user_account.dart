@@ -49,57 +49,73 @@ class UserAccountState extends State<UserAccount> {
 
   getSaveData() async {
     final prefs = await SharedPreferences.getInstance();
-    name = prefs.getString("name")!;
-    age = prefs.getString("age")!;
-    height = prefs.getString("height")!;
-    width = prefs.getString("width")!;
-    desiredWeight = prefs.getString("desiredWeight")!;
-    gender = prefs.getString("gender")!;
-    activity = prefs.getString("activity")!;
-    purpose = prefs.getString("purpose")!;
-    login = prefs.getString("login")!;
-    password = prefs.getString("password")!;
-    setState(() {});
+    name = prefs.getString("Имя")!;
+    age = prefs.getString("Возраст")!;
+    height = prefs.getString("Рост")!;
+    width = prefs.getString("Вес")!;
+    desiredWeight = prefs.getString("Желаемый вес")!;
+    gender = prefs.getString("Пол")!;
+    activity = prefs.getString("Активность")!;
+    purpose = prefs.getString("Цель")!;
+    login = prefs.getString("Логин")!;
+    password = prefs.getString("Пароль")!;
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(leading: IconButton(
           onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => HomeSetting()));
           },
           icon: Icon(Icons.add),
-        )),
-        body: ListView.builder(
-          itemCount: names.length,
-          itemBuilder: (context, index) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+          ),
+            backgroundColor: Colors.transparent,
+        ),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
+              fit: BoxFit.cover
+            )
+          ),
+          child: ListView(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => TextFontPage(names, num[index])));
-                        },
-                        child: Text(names[index], style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        )
-                      )
-                    ), name.isNotEmpty ?
-                    Text(name, style: TextStyle(color: Colors.black)) : Text("ksksks")
-                  ],
-                ),
-                Divider()
-              ],
-            );
-          }
+                textList(0, name),
+                textList(1, age),
+                textList(2, height),
+                textList(3, width),
+                textList(4, desiredWeight),
+                textList(5, gender),
+                textList(6, activity),
+                textList(7, purpose),
+                textList(8, login),
+                textList(9, password),
+            ],
+          ),
         ),
       ),
+    );
+  }
+
+  Row textList(int index, String str) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        TextButton(
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => TextFontPage(names[index])));
+            },
+            child: Text(names[index], style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            )
+            )
+        ), str.isEmpty ?
+        Text("") : Text(str, style: TextStyle(color: Colors.black))
+      ],
     );
   }
 }

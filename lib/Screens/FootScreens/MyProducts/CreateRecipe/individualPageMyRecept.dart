@@ -1,9 +1,11 @@
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class IndividualPagemyRecept extends StatefulWidget {
-  IndividualPagemyRecept({required this.data});
+  IndividualPagemyRecept({required this.a, required this.data});
+  String a;
   List data;
 
   @override
@@ -25,47 +27,77 @@ class _IndividualPagemyReceptState extends State<IndividualPagemyRecept> {
             fit: BoxFit.cover
           )
         ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 80),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 250,
-                width: 250,
-                child: CircleAvatar(
-                  backgroundColor: Colors.red
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 80),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 250,
+                  width: 250,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.red
+                  ),
                 ),
-              ),
-              Text("sllslsl"),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index){
-                    return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: Card(
-                          color: Colors.black.withOpacity(0.1),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                          child: Text(widget.data[index]))
-                      ),
-                    );
-                  }
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width - 40
+                  ),
+                  child: Text(widget.data[0],
+                    style: TextStyle(
+                      fontSize: 36
+                    ),
+                    textAlign: TextAlign.center,
+                  )
                 ),
-              ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Card(
-                color: Colors.black.withOpacity(0.1),
-                child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    child: Text("kksksssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _indicator(Colors.red, "Белки", widget.data[1]),
+                    _indicator(Colors.indigo, "Жиры", widget.data[2]),
+                    _indicator(Colors.white, "Углеводы", widget.data[3]),
+                  ],
+                ),
+                _container("Ингредиенты: ${widget.data[4]}"),
+                _container("Способ приготовления: ${widget.data[5]}"),
+                _container("Способ приготовления: ${widget.data[6]}"),
+                _container("Способ приготовления: ${widget.data[7]}"),
+              ],
             ),
-          )
-            ],
           ),
         ),
       ),
+    );
+  }
+
+  Column _indicator(Color color, String str, String text) {
+    return Column(
+      children: [
+        CircularPercentIndicator(
+          progressColor: color,
+          radius: 50,
+          percent: 0.3,
+          animation: true,
+          lineWidth: 7.0,
+          circularStrokeCap: CircularStrokeCap.round,
+          center: Text(text),
+        ),
+        Text(str, style: const TextStyle(
+          fontSize: 16,
+          color: Colors.white
+        ))
+      ],
+    );
+  }
+  
+  Container _container(String str) {
+    return Container(
+      width: MediaQuery.of(context).size.width - 40,
+      color: Colors.black.withOpacity(0.2),
+      child: Text(str, style: const TextStyle(
+        color: Colors.white,
+        fontSize: 16
+      )),
     );
   }
 }

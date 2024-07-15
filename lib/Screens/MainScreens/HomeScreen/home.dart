@@ -5,6 +5,7 @@ import 'package:body_strong/Screens/Map/mapScreen.dart';
 import 'package:body_strong/Screens/Pedometer/home_pedometer.dart';
 import 'package:body_strong/Screens/Profil/profil_sreens.dart';
 import 'package:body_strong/Screens/Setting/home_setting.dart';
+import 'package:body_strong/Screens/Tape/HomeTape.dart';
 import 'package:body_strong/Screens/Widgets/Generate_a_image.dart';
 import 'package:body_strong/Screens/Widgets/Generating_a_motivational_text.dart';
 import 'package:body_strong/Screens/MainScreens/HomeScreen/Main_menus_screens.dart';
@@ -21,7 +22,7 @@ class Home extends StatelessWidget {
         backgroundImage: Generate_a_image().m(),
         motivationText: Generating_a_motivational_text().m(),
         sections: const [
-          "Профиль",
+          "Лента",
           "Тренировка",
           "Питание",
           "Бег и ходьба",
@@ -32,7 +33,7 @@ class Home extends StatelessWidget {
         ],
 
         widget: [
-          Profil(),
+          HomeTape(),
           HomeWorkout(),
           HomeFoot(),
           HomePedometer(),

@@ -18,7 +18,12 @@ class HomeMyTraning extends StatefulWidget {
 class _HomeMyTraningState extends State<HomeMyTraning> {
   DateTime dateTime = DateTime.now();
   DateTime? _time;
-  Map<DateTime, List<Traninglist>> events = {};
+
+  void _onDaySelected(DateTime day, DateTime focuseDay) {
+    setState(() {
+      dateTime = day;
+    });
+  }
 
   final kg = TextEditingController();
   final pov = TextEditingController();
@@ -38,13 +43,8 @@ class _HomeMyTraningState extends State<HomeMyTraning> {
     }
   }
 
-  List<Traninglist> _get(DateTime day) {
-    return events[day] ?? [];
-  }
-
   @override
   void initState() {
-    _get(dateTime);
     getData();
     super.initState();
   }
@@ -66,6 +66,7 @@ class _HomeMyTraningState extends State<HomeMyTraning> {
                   )
               ),
               child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
                 padding: const EdgeInsets.only(top: 70),
@@ -78,7 +79,6 @@ class _HomeMyTraningState extends State<HomeMyTraning> {
                     firstDay: DateTime.utc(2023, 1, 1),
                     lastDay: DateTime.utc(2050, 3, 14),
                     focusedDay: dateTime,
-                    eventLoader: _get,
                     onDaySelected: _onDaySelected,
                   )
                 ),
@@ -88,30 +88,13 @@ class _HomeMyTraningState extends State<HomeMyTraning> {
                   child: ListView.builder(
                       itemCount: list.length,
                       itemBuilder: (context, index) {
-                        return Card(
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  card(list[index].name),
-                                  IconButton(
-                                      onPressed: (){
-                                        setState(() {
-                                          list.remove(list[index]);
-                                          List<String> strList = list.map((item) => json.encode(item.toJson())).toList();
-                                          sharedPreferences.setStringList("traningList", strList);
-                                        });
-                                      },
-                                      icon: Icon(Icons.delete, size: 30, color: Colors.red,)
-                                  )
-                                ],
-                              ),
-                             ],
-                          ),
+                        return card(
+                          list[index].name,
+                          index
                         );
                       }
                   ),
-                ) : Text("У вас пока нету тренировок")
+                ) : const Text("У вас пока нету тренировок")
             ],
           )
         ),
@@ -119,30 +102,57 @@ class _HomeMyTraningState extends State<HomeMyTraning> {
             onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => Workout()));
             },
+            child: const Icon(Icons.add),
         ),
       )
     );
   }
 
-  Widget card(String name) {
-    return SizedBox(
-      height: 200,
-      width: 300,
-      child: Card(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(name),
-            IconButton(
-              onPressed: (){
-                showDialog(context: context, builder: (context) {
-                  return _dialog(context);
-                  }
-                );
-              },
-              icon: const Icon(Icons.add)
-            )
-          ],
+  Widget card(String name, int index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: SizedBox(
+        height: 150,
+        width: 300,
+        child: Card(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - 150
+                    ),
+                    child: Text(name)
+                  ),
+                  IconButton(
+                    onPressed: (){
+                      showDialog(context: context, builder: (context) {
+                        return _dialog(context);
+                        }
+                      );
+                    },
+                    icon: const Icon(Icons.add)
+                  ),
+                ],
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: IconButton(
+                  onPressed: (){
+                    setState(() {
+                      list.remove(list[index]);
+                      List<String> strList = list.map((item) => json.encode(item.toJson())).toList();
+                      sharedPreferences.setStringList("traningList", strList);
+                    });
+                  },
+                  icon: const Icon(Icons.delete, size: 30, color: Colors.red,)
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

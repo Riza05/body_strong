@@ -3,7 +3,6 @@ import 'package:body_strong/Screens/Articles/articles_information.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 //Страница со статьями
 class ArticlesTemplateJson extends StatefulWidget {
@@ -13,7 +12,9 @@ class ArticlesTemplateJson extends StatefulWidget {
 }
 
 class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
-  List _articles = [];
+  List<dynamic> _articles = [];
+  List<dynamic> _notesForDisplay = [];
+
   Future<void> readJsonFile() async {
     final String response = await rootBundle.loadString("assets/Json_fiels/Articles.json");
     final data = await jsonDecode(response);
@@ -23,18 +24,37 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
   }
 
   @override
+  void initState() {
+    readJsonFile();
+    super.initState();
+  }
+
+  _searchBar() {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: "Поиск"
+        ),
+        onChanged: (text) {
+          text = text.toLowerCase();
+          setState(() {
+
+          });
+        }
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeColorAndfont().themeColorAndfont(context),
       home: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {},
-            )
-          ]
+          leading: IconButton(onPressed: (){}, icon: Icon(Icons.backspace)),
+          backgroundColor: Colors.transparent,
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -43,19 +63,11 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
               fit: BoxFit.cover
             )
           ),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 200),
-                child: ElevatedButton(onPressed: (){
-                  readJsonFile();
-                }, child: Text("dkkdkd")),
-              ),
-              _articles.isNotEmpty ? Expanded(
+          child: _articles.isNotEmpty ? Expanded(
                 child: ListView.builder(
                   itemCount: _articles.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
+                  itemBuilder: (context, index) {
+                    return index == 0 ? _searchBar() : Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
                       child: Column(
                         children: [
@@ -85,11 +97,8 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
                   }
                 )
               ) : Container()
-            ],
           ),
         )
-      ),
     );
   }
 }
-

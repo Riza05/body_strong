@@ -1,6 +1,9 @@
+import 'package:body_strong/Screens/Setting/home_setting.dart';
 import 'package:body_strong/Screens/WorkoutScreen/Measurements/measurements_screen.dart';
+import 'package:body_strong/Screens/WorkoutScreen/home_workout.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeMeasurements extends StatefulWidget {
   const HomeMeasurements({super.key});
@@ -10,80 +13,110 @@ class HomeMeasurements extends StatefulWidget {
 }
 
 class _HomeMeasurementsState extends State<HomeMeasurements> {
-  /*bool isVisible = true;
-  var title = "";
-  var description = "";
-  var warning = "";
+  List names = [
+    "Вес",
+    "Шея",
+    "Грудь",
+    "Бицепс",
+    "Предплечье",
+    "Талия",
+    "Бедра",
+    "Голень",
+  ];
+
+  List num = [
+    0,1,2,3,4,5,6,7
+  ];
+
+  var weight = "";
+  var neck = "";
+  var chest = "";
+  var biceps = "";
+  var forearms = "";
+  var waist = "";
+  var hips = "";
+  var shin = "";
 
   @override
   void initState() {
     getSaveData();
     super.initState();
+    setState(() {});
   }
 
   getSaveData() async {
     final prefs = await SharedPreferences.getInstance();
-    title = prefs.getString("title")!;
-    description = prefs.getString("description")!;
-    warning = prefs.getString("warning")!;
-    setState(() {
-
-    });
+    weight = prefs.getString("Вес")!;
+    neck = prefs.getString("Шея")!;
+    chest = prefs.getString("Грудь")!;
+    biceps = prefs.getString("Бицепс")!;
+    forearms = prefs.getString("Предплечье")!;
+    waist = prefs.getString("Талия")!;
+    hips = prefs.getString("Бедра")!;
+    shin = prefs.getString("Голень")!;
   }
-
-  clear() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.clear();
-    setState(() {
-    });
-  }*/
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeColorAndfont().themeColorAndfont(context),
-        home: Scaffold(
-            extendBodyBehindAppBar: true,
-            appBar: ThemeColorAndfont().backScreen(context),
-            body: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                         image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
-                        fit: BoxFit.cover
-                    )
-                ),
-                child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("Замеры", style: TextStyle(
-                            fontSize: 38
-                        )),
-                        SizedBox(height: 40),
-                        ConstrainedBox(
-                          constraints: BoxConstraints(maxWidth: 300),
-                          child: Text("Записывайте и сохраняйте ваши данные, они будут всегда под рукой", style: TextStyle(
-                            fontSize: 26,
-                            color: Colors.white,
-                          ),textAlign: TextAlign.center,),
-                        ),
-                        SizedBox(height: 40),
-                        ElevatedButton(
-                            onPressed: (){
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Measurements()));
-                            },
-                            child: Text("Создать", style: TextStyle(
-                                fontSize: 20
-                            )
-                            )
-                        ),
-                      ],
-                    )
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          leading: IconButton(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => HomeWorkout()));
+          },
+          icon: const Icon(Icons.backspace),
+        ),
+          title: Text("Замеры"),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+        ),
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/iPhone-13-Pro-Max-13.jpg"),
+                  fit: BoxFit.cover
+              )
+          ),
+          child: ListView(
+            children: [
+              textList(0, weight),
+              textList(1, neck),
+              textList(2, chest),
+              textList(3, biceps),
+              textList(4, forearms),
+              textList(5, waist),
+              textList(6, hips),
+              textList(7, shin),
+              Text(weight)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Column textList(int index, String str) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Measurements(names[index])));
+              },
+              child: Text(names[index], style: TextStyle(
+                fontSize: 18,
+                  color: Colors.white,
                 )
-            )
+              )
+            ), Text(str, style: TextStyle(color: Colors.black))
+          ],
+        ),
+        Divider()
+      ],
     );
   }
 }

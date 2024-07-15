@@ -15,20 +15,20 @@ class StartTabata extends StatefulWidget {
 }
 
 class _StartTabataState extends State<StartTabata> {
-  final int _endDuration = 20;
+  //final int _endDuration = 20;
   final CountDownController _controller = CountDownController();
   int num = 0;
-  String test = "";
   static const maxSeconds = 60;
   int seconds = maxSeconds;
   Timer? timer;
+  Duration w = Duration(seconds: 3);
 
   void startTimer({bool reset = true}) {
     if (reset) {
       resetTimer();
     }
 
-    timer = Timer.periodic(Duration(seconds: 1), (_) {
+    timer = Timer.periodic(Duration(milliseconds: 50), (_) {
       if(seconds > 0) {
         setState(() {
           seconds--;
@@ -47,6 +47,14 @@ class _StartTabataState extends State<StartTabata> {
       resetTimer();
     }
     setState(() => timer?.cancel());
+  }
+
+  @override
+  void initState() {
+    setState(() {
+      btnTime();
+    });
+    super.initState();
   }
 
   @override
@@ -117,11 +125,11 @@ class _StartTabataState extends State<StartTabata> {
       return const Icon(Icons.check, color: Color(0xFFFAFF00), size: 80);
     } else {
       return Text("$seconds",
-          style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              fontSize: 80
-          )
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+          fontSize: 80
+        )
       );
     }
   }
@@ -130,8 +138,8 @@ class _StartTabataState extends State<StartTabata> {
       final isRunning = timer == null ? false : timer!.isActive;
       final isCompleted = seconds == maxSeconds || seconds == 0;
 
-      return isRunning || !isCompleted
-          ? Row(
+      return isRunning || !isCompleted ? Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ButtonWidget(
               onClicked: (){

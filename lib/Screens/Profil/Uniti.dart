@@ -6,9 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Uniti {
   static const String key = "IMAGE_KEY";
 
-  static Future<bool> saveImageToPreferences(String value) async {
+  static Future<void> saveImageToPreferences(String value) async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
-    return preferences.setString(key, value);
+    preferences.setString(key, value);
   }
 
   static Future<String?> getImageFromPreferences() async {

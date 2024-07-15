@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 //Шрифт,цвет для theme
 class ThemeColorAndfont {
+  var col = Color(0xFFFAFF00);
+
   ThemeData themeColorAndfont(BuildContext context) => ThemeData(
     /*textTheme: Theme.of(context).textTheme.apply(
       bodyColor: Color(0xFFFAFF00),
@@ -22,6 +24,11 @@ class ThemeColorAndfont {
         foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0))
+        ),
+        textStyle: WidgetStateProperty.all<TextStyle>(
+          TextStyle(
+            fontSize: 24,
+          )
         )
       )
     )

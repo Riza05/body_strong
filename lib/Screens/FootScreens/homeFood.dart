@@ -1,5 +1,6 @@
 import 'package:body_strong/Screens/FootScreens/MyProducts/CreateRecipe/Confirm_ingredients.dart';
 import 'package:body_strong/Screens/FootScreens/Recipes/Recipes.dart';
+import 'package:body_strong/Screens/FootScreens/SportsNutrition/sportsNutrition.dart';
 import 'package:body_strong/Screens/Widgets/Generate_a_image.dart';
 import 'package:body_strong/Screens/Widgets/Generating_a_motivational_text.dart';
 import 'package:body_strong/Screens/MainScreens/HomeScreen/Main_menus_screens.dart';
@@ -25,7 +26,8 @@ class HomeFoot extends StatelessWidget {
 
         widget: [
           Recipes(),
-          ConfirmIngredients()
+          ConfirmIngredients(),
+          SportsNutrition()
         ],
       ),
     );

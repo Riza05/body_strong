@@ -1,11 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:body_strong/Screens/Profil/Uniti.dart';
 import 'package:body_strong/themeColorAndfont.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 //Страница "Профиль"
@@ -17,8 +17,8 @@ class Profil extends StatefulWidget {
 class _ProfilState extends State<Profil> {
   //Icons.add_box_outlined
   List listImg = [];
-
   File? image;
+
   Future pickImage(ImageSource source) async {
     try {
       final _image = await ImagePicker().pickImage(source: source);
@@ -33,27 +33,38 @@ class _ProfilState extends State<Profil> {
     }
   }
 
+  Future<File> writeImageToFile(String base64Image, String filename) async {
+    Uint8List bytes = base64Decode(base64Image);
+
+    // Получение временной директории для сохранения файла
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+
+    // Создание файла
+    File file = File('$tempPath/$filename');
+
+    // Запись байтов в файл
+    await file.writeAsBytes(bytes);
+
+    return file;
+  }
+
   loadImageFromPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final imageKeyValue = prefs.getString("IMAGE_KEY");
     if (imageKeyValue != null) {
       final imageString = await Uniti.getImageFromPreferences();
+      final imageFile = await writeImageToFile(imageString!, 'saved_image.jpg');
       setState(() {
-        image = Uniti.imageFromBase64String(imageString!) as File?;
+        image = imageFile;
       });
     }
   }
 
-  void qqq() {
-      listImg.add(image);
-  }
-
   @override
   void initState() {
-    super.initState();
     loadImageFromPrefs();
-    qqq();
-    setState(() {});
+    super.initState();
   }
 
   @override
@@ -130,7 +141,7 @@ class _ProfilState extends State<Profil> {
                     ),
                   ),
                   Text("Риза Мисриханов", style: ThemeColorAndfont().themeColorAndfont(context).textTheme.titleMedium),
-                   image == null ? Container()
+                   image == null ? Text("У вас пока нету опубликованных фотографий")
                      : Expanded(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -142,10 +153,10 @@ class _ProfilState extends State<Profil> {
                           ),
                           itemCount: listImg.length,
                           itemBuilder: (context, index) {
-                            return Container(
-                              height: 100,
-                              width: 100,
-                              child: Image(image: FileImage(image!)),
+                            return Image(
+                              image: FileImage(image!),
+                              height: 200,
+                              width: 200,
                             );
                           }
                         ),
