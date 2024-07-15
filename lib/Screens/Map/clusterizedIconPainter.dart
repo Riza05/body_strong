@@ -11,7 +11,7 @@ class ClusterIconPainter {
   final int clusterSize;
 
   /// Метод, который отрисовывает фигуру кластера (фон и обводка)
-  Canvas _paintCirclePlacemark({
+  Canvas paintCirclePlacemark({
     required Size size,
     required PictureRecorder recorder,
   }) {
