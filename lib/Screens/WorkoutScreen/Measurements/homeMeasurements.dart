@@ -1,7 +1,5 @@
-import 'package:body_strong/Screens/Setting/home_setting.dart';
 import 'package:body_strong/Screens/WorkoutScreen/Measurements/measurements_screen.dart';
 import 'package:body_strong/Screens/WorkoutScreen/home_workout.dart';
-import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

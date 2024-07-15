@@ -1,9 +1,4 @@
-import 'dart:convert';
-import 'package:body_strong/Screens/FootScreens/Recipes/recipesHttp.dart';
 import 'package:flutter/material.dart';
-import 'package:webfeed_plus/domain/rss_feed.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:http/http.dart' as http;
 
 //Раздел рецептов
 class Recipes extends StatefulWidget {
@@ -60,7 +55,7 @@ class _RecipesState extends State<Recipes> {
   }
 
   //Отображение продуктов в виде таблицы
-  GridView _grid() {
+  /*GridView _grid() {
     return GridView.builder(
       itemCount: 10,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -72,7 +67,7 @@ class _RecipesState extends State<Recipes> {
         return _inkWell();
       }
     );
-  }
+  }*/
 
   Widget _inkWell() {
     return Material(

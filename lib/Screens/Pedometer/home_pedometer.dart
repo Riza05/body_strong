@@ -1,13 +1,13 @@
 import 'dart:ui';
 
 import 'package:body_strong/Screens/Pedometer/Music/music.dart';
-import 'package:body_strong/textFormFieldTemplate.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pedometer/pedometer.dart';
 import 'dart:async';
+
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class HomePedometer extends StatefulWidget {
@@ -251,12 +251,12 @@ class _HomePedometerState extends State<HomePedometer> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      /*CircularPercentIndicator(
+                      CircularPercentIndicator(
                         radius: 100,
                         center: Text("Подсчет шагов\n${_steps}", textAlign: TextAlign.center),
                         percent: double.parse(_steps) * 100 / 5000 / 100,
                         progressColor: Colors.red,
-                      ),*/
+                      ),
                       _gridView(),
                       _btns(),
                       btn((){
