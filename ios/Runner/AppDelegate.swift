@@ -15,6 +15,7 @@ import YandexMapsMobile
     if #available(iOS 10.0, *) {
       UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
     }
+    GMSServices.provideAPIKey("AIzaSyDQ9v3qCS1wg5WMHq4fYAihHAT1cA922cs")
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

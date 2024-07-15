@@ -6,6 +6,7 @@ import 'package:body_strong/Screens/Setting/settings_sections/subscription.dart'
 import 'package:body_strong/Screens/Setting/settings_sections/support.dart';
 import 'package:body_strong/themeColorAndfont.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeSetting extends StatelessWidget {
   HomeSetting({super.key});
@@ -13,10 +14,13 @@ class HomeSetting extends StatelessWidget {
   List _settings = [
     "Личные данные",
     "Особенности рациона",
+    "Учетная запись",
     "Подписка",
     "Уведомление",
     "Пригласи друга",
+    "Промокод",
     "Поддержка",
+    "Часто задаваемые вопросы",
     "О нас"
   ];
 

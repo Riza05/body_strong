@@ -23,6 +23,7 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
   }
 
   @override
+<<<<<<< HEAD
   void initState() {
     readJsonFile();
     super.initState();
@@ -54,6 +55,27 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
         appBar: AppBar(
           leading: IconButton(onPressed: (){}, icon: Icon(Icons.backspace)),
           backgroundColor: Colors.transparent,
+=======
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+            leading: BackButton(
+              color: Colors.white,
+              onPressed: (){
+                Navigator.pop(context);
+              },
+            ),
+            actions: [
+              IconButton(
+                  onPressed: (){},
+                  icon: Icon(Icons.filter_list_alt)
+              )
+            ],
+            backgroundColor: Colors.transparent,
+            elevation: 0
+>>>>>>> origin/master
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -62,6 +84,7 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
               fit: BoxFit.cover
             )
           ),
+<<<<<<< HEAD
           child: _articles.isNotEmpty ? Expanded(
                 child: ListView.builder(
                   itemCount: _articles.length,
@@ -92,12 +115,43 @@ class _ArticlesTemplateJsonState extends State<ArticlesTemplateJson> {
                             ),
                         ],
                       ),
+=======
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 200),
+                child: ElevatedButton(onPressed: (){
+                  readJsonFile();
+                }, child: Text("dkkdkd")),
+              ),
+              _articles.isNotEmpty ? Expanded(
+                child: ListView.builder(
+                  itemCount: _articles.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Column(
+                      children: [
+                        Image(
+                          image: AssetImage(_articles[index]["img"]),
+                        ),
+                        ElevatedButton(
+                          onPressed: (){},
+                          child: Text(_articles[index]["name"])
+                        )
+                      ],
+>>>>>>> origin/master
                     );
                   }
                 )
               ) : Container()
+<<<<<<< HEAD
           ),
         )
+=======
+            ],
+          ),
+        )
+      ),
+>>>>>>> origin/master
     );
   }
 }
